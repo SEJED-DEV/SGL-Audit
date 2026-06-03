@@ -1,0 +1,21 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "blogs": "Blogs",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Accountant for entrepreneurs, freelancers and companies",
+    "description": "SGL Audit firm specialized in business creation, accounting management and tax optimization.",
+    "cta": "Contact Us"
+  },
+  "services": {
+    "title": "Our Expertise",
+    "accounting": "Accounting",
+    "social": "Payroll / Social",
+    "legal": "Legal & Tax",
+    "consulting": "Management Consulting"
+  }
+}

@@ -1,0 +1,216 @@
+
+> tmp-app@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.7 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 520ms
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+
+○ Compiling /[lang] ...
+ GET /fr 200 in 9.0s (next.js: 7.1s, proxy.ts: 126ms, application-code: 1737ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/fr" tree={[...]} params={{lang:"fr"}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="src/[lang]...">
+              <SegmentTrieNode>
+              <Home>
+                <div className="flex flex-col">
+                  <section>
+                  <section>
+                  <section>
+                  <section id="contact" className="py-24 bg-w...">
+                    <div className="container ...">
+                      <div className="grid grid-...">
+                        <div>
+                        <div className="bg-zinc-50...">
+                          <ContactForm lang="fr">
+                            <form onSubmit={function handleSubmit} className="space-y-6">
+                              <div className="grid grid-...">
+                                <div>
+                                  <label>
+                                  <input
+                                    required={true}
+                                    name="name"
+                                    type="text"
+                                    className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dar..."
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                <div>
+                                  <label>
+                                  <input
+                                    required={true}
+                                    name="email"
+                                    type="email"
+                                    className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dar..."
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                              <div>
+                                <label>
+                                <textarea
+                                  required={true}
+                                  name="message"
+                                  rows={5}
+                                  className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:..."
+-                                 style={{caret-color:"transparent"}}
+                                >
+                              ...
+            ...
+          ...
+
+[browser] Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+ GET /fr 200 in 201ms (next.js: 36ms, proxy.ts: 9ms, application-code: 155ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/fr" tree={[...]} params={{lang:"fr"}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="src/[lang]...">
+              <SegmentTrieNode>
+              <Home>
+                <div className="flex flex-col">
+                  <section>
+                  <section>
+                  <section>
+                  <section id="contact" className="py-24 bg-w...">
+                    <div className="container ...">
+                      <div className="grid grid-...">
+                        <div>
+                        <div className="bg-zinc-50...">
+                          <ContactForm lang="fr">
+                            <form onSubmit={function handleSubmit} className="space-y-6">
+                              <div className="grid grid-...">
+                                <div>
+                                  <label>
+                                  <input
+                                    required={true}
+                                    name="name"
+                                    type="text"
+                                    className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dar..."
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                <div>
+                                  <label>
+                                  <input
+                                    required={true}
+                                    name="email"
+                                    type="email"
+                                    className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dar..."
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                              <div>
+                                <label>
+                                <textarea
+                                  required={true}
+                                  name="message"
+                                  rows={5}
+                                  className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:..."
+-                                 style={{caret-color:"transparent"}}
+                                >
+                              ...
+            ...
+          ...
+
+[browser] Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+ GET /en 200 in 157ms (next.js: 28ms, proxy.ts: 8ms, application-code: 121ms)
+[browser] Encountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template).
+ GET /en/blogs 200 in 1365ms (next.js: 1314ms, proxy.ts: 9ms, application-code: 42ms)
+ GET /fr 200 in 190ms (next.js: 32ms, proxy.ts: 5ms, application-code: 152ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/fr" tree={[...]} params={{lang:"fr"}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="src/[lang]...">
+              <SegmentTrieNode>
+              <Home>
+                <div className="flex flex-col">
+                  <section>
+                  <section>
+                  <section>
+                  <section id="contact" className="py-24 bg-w...">
+                    <div className="container ...">
+                      <div className="grid grid-...">
+                        <div>
+                        <div className="bg-zinc-50...">
+                          <ContactForm lang="fr">
+                            <form onSubmit={function handleSubmit} className="space-y-6">
+                              <div className="grid grid-...">
+                                <div>
+                                  <label>
+                                  <input
+                                    required={true}
+                                    name="name"
+                                    type="text"
+                                    className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dar..."
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                <div>
+                                  <label>
+                                  <input
+                                    required={true}
+                                    name="email"
+                                    type="email"
+                                    className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dar..."
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                              <div>
+                                <label>
+                                <textarea
+                                  required={true}
+                                  name="message"
+                                  rows={5}
+                                  className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:..."
+-                                 style={{caret-color:"transparent"}}
+                                >
+                              ...
+            ...
+          ...
+
+[browser] Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+ GET /en 200 in 86ms (next.js: 28ms, proxy.ts: 5ms, application-code: 54ms)
+[browser] Encountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template).
+ GET /en/blogs 200 in 90ms (next.js: 45ms, proxy.ts: 8ms, application-code: 37ms)
+ GET /fr 200 in 269ms (next.js: 26ms, proxy.ts: 5ms, application-code: 238ms)
+[browser] Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+ GET /fr 200 in 228ms (next.js: 40ms, proxy.ts: 8ms, application-code: 181ms)
+[browser] Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
