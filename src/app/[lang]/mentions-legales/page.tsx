@@ -25,7 +25,7 @@ export default async function MentionsLegalesPage({
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl prose prose-slate dark:prose-invert lg:prose-lg">
           <h2>1. Éditeur du site</h2>
           <p>
-            Le site <strong>{siteConfig.url}</strong> est édité par :<br />
+            Le site <strong>sglaudit.com</strong> est édité par :<br />
             <strong>{siteConfig.name}</strong><br />
             Siège social : {siteConfig.location.address}<br />
             Téléphone : {siteConfig.contact.phone}<br />

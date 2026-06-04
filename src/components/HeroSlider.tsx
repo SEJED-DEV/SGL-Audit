@@ -80,7 +80,7 @@ export function HeroSlider({ lang, dict }: { lang: string, dict: any }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.6, ease: "easeOut", staggerChildren: 0.2 }}
+              transition={{ duration: 0.6, staggerChildren: 0.2 }}
             >
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}

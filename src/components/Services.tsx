@@ -64,11 +64,11 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" }
+    transition: { duration: 0.5 }
   }
 }
 
-export function Services() {
+export function Services({ lang }: { lang?: string }) {
   return (
     <section id="expertises" className="py-24 bg-white dark:bg-black relative overflow-hidden">
       {/* Background glow */}

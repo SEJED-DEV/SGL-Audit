@@ -25,7 +25,7 @@ const features = [
   }
 ]
 
-export function InvestInTunisia() {
+export function InvestInTunisia({ lang }: { lang?: string }) {
   return (
     <section id="investir" className="relative py-32 bg-slate-50 dark:bg-zinc-950 overflow-hidden">
       {/* Decorative Background Elements */}
