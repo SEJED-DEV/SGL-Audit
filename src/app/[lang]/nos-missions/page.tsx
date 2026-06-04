@@ -1,23 +1,34 @@
 import { siteConfig } from '@/config/site'
 import { CheckCircle2, Calculator, Users, Scale, Zap, Shield, Smartphone } from 'lucide-react'
 
-export default function NosMissionsPage() {
+export default async function NosMissionsPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>
+}) {
+  const { lang } = await params
   return (
-    <main className="min-h-screen bg-slate-50 dark:bg-zinc-950 pt-24 pb-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Section */}
-        <div className="max-w-4xl mx-auto text-center mb-20">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Nos Expertises : Un Accompagnement à 360° pour votre Entreprise
-          </h1>
-          <div className="h-1 w-24 bg-blue-600 rounded mx-auto mb-8"></div>
-          <p className="text-xl text-slate-600 dark:text-slate-400 mb-6 font-medium">
-            Simplifiez votre gestion, sécurisez votre croissance et concentrez-vous sur l'essentiel : votre métier.
-          </p>
-          <p className="text-lg text-slate-600 dark:text-slate-400">
-            En tant que partenaire de confiance, notre cabinet d'expertise comptable accompagne les entrepreneurs et dirigeants dans toutes les étapes de la vie de leur entreprise. Nous combinons rigueur technique et conseil stratégique pour transformer vos obligations réglementaires en véritables leviers de performance.
-          </p>
+    <main className="min-h-screen bg-slate-50 dark:bg-zinc-950">
+      {/* Hero */}
+      <section className="min-h-[100dvh] flex items-center pt-24 pb-20 bg-gradient-to-br from-slate-900 to-blue-950 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
+        <div className="relative w-full container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              Nos Missions : Un Accompagnement à 360°
+            </h1>
+            <div className="h-1 w-24 bg-blue-500 rounded mx-auto mb-8"></div>
+            <p className="text-xl text-slate-300 mb-6 font-medium">
+              Simplifiez votre gestion, sécurisez votre croissance et concentrez-vous sur l'essentiel : votre métier.
+            </p>
+            <p className="text-lg text-slate-400">
+              En tant que partenaire de confiance, notre cabinet d'expertise comptable accompagne les entrepreneurs et dirigeants dans toutes les étapes de la vie de leur entreprise. Nous combinons rigueur technique et conseil stratégique pour transformer vos obligations réglementaires en véritables leviers de performance.
+            </p>
+          </div>
         </div>
+      </section>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
 
         {/* Expertise Domains */}
         <div className="space-y-24 mb-24">
@@ -152,7 +163,7 @@ export default function NosMissionsPage() {
               rel="noreferrer"
               className="inline-flex justify-center items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-full font-bold shadow-lg hover:bg-slate-50 transition-colors"
             >
-              Devis gratuit via WhatsApp
+              Contactez-nous via WhatsApp
             </a>
           </div>
         </div>

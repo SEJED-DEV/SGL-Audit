@@ -1,56 +1,125 @@
-import { Globe, Building2, UserPlus } from 'lucide-react'
+'use client'
+
+import { Globe, Building2, UserPlus, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 const features = [
   {
     icon: Building2,
     title: "Création d'entreprise à Tunis",
     description: "Choisissez le type d’entreprise adapté à votre projet : SASU, SAS, SARL, EURL, micro-entreprise ou entreprise individuelle (EI). Nous guidons chaque étape, de la formalisation juridique à l’immatriculation.",
+    color: "from-blue-500 to-indigo-500"
   },
   {
     icon: Globe,
     title: "Acheter une entreprise à Tunis",
     description: "Vous souhaitez acquérir une entreprise existante ? Explorez les options pour acheter une société étagère (Shelf Company), reprendre une entreprise déjà établie ou acquérir un fonds de commerce.",
+    color: "from-indigo-500 to-purple-500"
   },
   {
     icon: UserPlus,
     title: "Services pour non-résidents",
     description: "Si vous êtes étranger, nous proposons des services spécifiques : création d’entreprise, domiciliation à Tunis, et représentation fiscale par un mandataire en Tunisie.",
+    color: "from-purple-500 to-pink-500"
   }
 ]
 
 export function InvestInTunisia() {
   return (
-    <section id="investir" className="py-24 bg-white dark:bg-black">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <div className="lg:w-1/3">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
-              Investir en Tunisie
-            </h2>
-            <div className="h-1 w-20 bg-blue-600 rounded mb-6"></div>
-            <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-              Cette section est dédiée aux investisseurs souhaitant s’implanter ou investir en Tunisie. Vous y trouverez toutes les options pour créer ou reprendre une entreprise à Tunis, ainsi que les services spécialisés pour les non-résidents.
-            </p>
+    <section id="investir" className="relative py-32 bg-slate-50 dark:bg-zinc-950 overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-20 items-start">
+          
+          {/* Left Column - Sticky */}
+          <div className="lg:w-5/12 lg:sticky lg:top-32">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-semibold mb-6">
+                <Globe className="w-4 h-4" />
+                Développement International
+              </div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
+                Investir en <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Tunisie</span>
+              </h2>
+              <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium">
+                Saisissez les opportunités d'un marché dynamique. Nous sécurisons votre implantation et optimisons vos investissements à Tunis.
+              </p>
+              
+              <div className="hidden lg:block space-y-6">
+                <div className="flex items-center gap-4 text-slate-700 dark:text-slate-300">
+                  <div className="w-12 h-12 rounded-full bg-white dark:bg-zinc-900 shadow-sm flex items-center justify-center border border-slate-100 dark:border-zinc-800">
+                    <span className="font-bold text-blue-600">1</span>
+                  </div>
+                  <span className="font-semibold text-lg">Stratégie d'implantation</span>
+                </div>
+                <div className="flex items-center gap-4 text-slate-700 dark:text-slate-300">
+                  <div className="w-12 h-12 rounded-full bg-white dark:bg-zinc-900 shadow-sm flex items-center justify-center border border-slate-100 dark:border-zinc-800">
+                    <span className="font-bold text-indigo-600">2</span>
+                  </div>
+                  <span className="font-semibold text-lg">Structuration juridique</span>
+                </div>
+                <div className="flex items-center gap-4 text-slate-700 dark:text-slate-300">
+                  <div className="w-12 h-12 rounded-full bg-white dark:bg-zinc-900 shadow-sm flex items-center justify-center border border-slate-100 dark:border-zinc-800">
+                    <span className="font-bold text-purple-600">3</span>
+                  </div>
+                  <span className="font-semibold text-lg">Gestion au quotidien</span>
+                </div>
+              </div>
+            </motion.div>
           </div>
           
-          <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Right Column - Scrolling Cards */}
+          <div className="lg:w-7/12 flex flex-col gap-8">
             {features.map((feature, index) => (
-              <div 
+              <motion.div 
                 key={index} 
-                className="p-8 rounded-2xl bg-slate-50 dark:bg-zinc-900 border border-slate-100 dark:border-zinc-800"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group relative"
               >
-                <div className="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-6">
-                  <feature.icon className="w-6 h-6" />
+                {/* Glowing border effect on hover */}
+                <div className="absolute -inset-px bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500" />
+                
+                <div className="relative p-8 md:p-10 rounded-3xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-xl shadow-slate-200/20 dark:shadow-none h-full flex flex-col items-start overflow-hidden">
+                  
+                  {/* Subtle top gradient line */}
+                  <div className={cn("absolute top-0 left-0 right-0 h-1 bg-gradient-to-r", feature.color)} />
+
+                  <div className={cn(
+                    "w-16 h-16 rounded-2xl flex items-center justify-center mb-8 shadow-inner",
+                    "bg-gradient-to-br from-slate-50 to-slate-100 dark:from-zinc-800 dark:to-zinc-900",
+                    "group-hover:scale-110 transition-transform duration-500"
+                  )}>
+                    <feature.icon className="w-8 h-8 text-slate-800 dark:text-white" />
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                    {feature.title}
+                  </h3>
+                  
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg mb-8">
+                    {feature.description}
+                  </p>
+                  
+                  <div className="mt-auto flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold cursor-pointer opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    Découvrir l'accompagnement <ArrowRight className="w-5 h-5" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                  {feature.description}
-                </p>
-              </div>
+              </motion.div>
             ))}
           </div>
+
         </div>
       </div>
     </section>

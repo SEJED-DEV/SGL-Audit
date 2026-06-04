@@ -1,4 +1,8 @@
+'use client'
+
 import { LineChart, Lock, FileText, Globe } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 const extras = [
   {
@@ -23,39 +27,95 @@ const extras = [
   }
 ]
 
-export function ExtraServices() {
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+}
+
+export function ExtraServices({ lang }: { lang?: string }) {
   return (
-    <section id="formalites" className="py-24 bg-slate-50 dark:bg-zinc-900/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
-            Bien plus qu’un expert-comptable : un accompagnement global pour vos projets
-          </h2>
-          <div className="h-1 w-20 bg-blue-600 rounded mx-auto"></div>
+    <section id="formalites" className="py-32 bg-slate-50 dark:bg-zinc-900/50 relative overflow-hidden">
+      {/* Decorative background grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-bold mb-8 uppercase tracking-widest"
+          >
+            Services additionnels
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight"
+          >
+            Bien plus qu’un expert-comptable
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-slate-600 dark:text-slate-400"
+          >
+            Un accompagnement global pour sécuriser et accélérer tous vos projets stratégiques en Tunisie.
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10"
+        >
           {extras.map((extra, index) => (
-            <div 
-              key={index} 
-              className="flex flex-col sm:flex-row gap-6 p-8 bg-white dark:bg-zinc-950 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 dark:border-zinc-800"
+            <motion.div 
+              key={index}
+              variants={itemVariants}
+              className="group relative"
             >
-              <div className="flex-shrink-0">
-                <div className="w-14 h-14 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 flex items-center justify-center">
-                  <extra.icon className="w-7 h-7" />
+              {/* Glowing background */}
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-20 blur-lg transition duration-500" />
+              
+              <div className="relative flex flex-col sm:flex-row gap-8 p-10 bg-white dark:bg-zinc-950 rounded-3xl border border-slate-200 dark:border-zinc-800 shadow-xl shadow-slate-200/20 dark:shadow-none transition-transform duration-500 hover:-translate-y-2 h-full">
+                
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-zinc-800 dark:to-zinc-900 border border-slate-100 dark:border-zinc-800 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                    <extra.icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                  </div>
                 </div>
+                
+                <div className="flex flex-col justify-center">
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {extra.title}
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
+                    {extra.description}
+                  </p>
+                </div>
+                
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
-                  {extra.title}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                  {extra.description}
-                </p>
-              </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

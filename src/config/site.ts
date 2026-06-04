@@ -1,4 +1,4 @@
-export const siteConfig = {
+﻿export const siteConfig = {
   name: "SGL Audit",
   description: "Expert-comptable en Tunisie: création d'entreprise, gestion comptable, conseils juridiques et fiscaux.",
   contact: {
@@ -14,6 +14,7 @@ export const siteConfig = {
   social: {
     linkedin: "https://www.linkedin.com/",
     facebook: "https://www.facebook.com/",
+    instagram: "https://www.instagram.com/",
   },
   credits: {
     madeBy: "sejed.dev",
@@ -21,32 +22,41 @@ export const siteConfig = {
   },
   navigation: [
     {
-      name: { fr: "Accueil", en: "Home", ar: "الرئيسية" },
+      name: { fr: "Accueil", en: "Home", ar: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©" },
       href: "/"
     },
     {
-      name: { fr: "Nos Missions", en: "Our Missions", ar: "مهامنا" },
+      name: { fr: "Nos Missions", en: "Our Missions", ar: "Ù…Ù‡Ø§Ù…Ù†Ø§" },
       href: "/nos-missions"
     },
     {
-      name: { fr: "Investir en Tunisie", en: "Invest in Tunisia", ar: "الاستثمار في تونس" },
-      href: "/#investir"
+      name: { fr: "Investir en Tunisie", en: "Invest in Tunisia", ar: "Ø§Ù„Ø§Ø³ØªØ«Ù…Ø§Ø± ÙÙŠ ØªÙˆÙ†Ø³" },
+      href: "/investir-en-tunisie"
     },
     {
-      name: { fr: "Nos Expertises", en: "Our Expertise", ar: "خبراتنا" },
-      href: "/#expertises"
+      name: { fr: "Nos Expertises", en: "Our Expertise", ar: "Ø®Ø¨Ø±Ø§ØªÙ†Ø§" },
+      href: "/nos-expertises",
+      children: [
+        { name: { fr: "Expertise Comptable", en: "Accounting", ar: "Ø§Ù„Ø®Ø¨Ø±Ø© Ø§Ù„Ù…Ø­Ø§Ø³Ø¨ÙŠØ©" }, href: "/nos-expertises/expertise-comptable" },
+        { name: { fr: "Paie & Social", en: "Payroll & Social", ar: "Ø§Ù„Ø±ÙˆØ§ØªØ¨ ÙˆØ§Ù„Ø§Ø¬ØªÙ…Ø§Ø¹ÙŠ" }, href: "/nos-expertises/paie-social" },
+        { name: { fr: "Juridique & Fiscal", en: "Legal & Tax", ar: "Ù‚Ø§Ù†ÙˆÙ†ÙŠ ÙˆØ¶Ø±ÙŠØ¨ÙŠ" }, href: "/nos-expertises/juridique-fiscal" },
+      ]
     },
     {
-      name: { fr: "Formalités", en: "Formalities", ar: "الإجراءات" },
-      href: "/#formalites"
+      name: { fr: "Vos Métiers", en: "Your Sectors", ar: "Ù‚Ø·Ø§Ø¹Ø§ØªÙƒÙ…" },
+      href: "/vos-metiers"
     },
     {
-      name: { fr: "Blog", en: "Blog", ar: "المدونة" },
-      href: "/#blog"
+      name: { fr: "Formalités", en: "Formalities", ar: "Ø§Ù„Ø¥Ø¬Ø±Ø§Ø¡Ø§Øª" },
+      href: "/formalites"
     },
     {
-      name: { fr: "Contact", en: "Contact", ar: "اتصل بنا" },
-      href: "/#contact"
+      name: { fr: "Blog", en: "Blog", ar: "Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©" },
+      href: "/blog"
+    },
+    {
+      name: { fr: "Contact", en: "Contact", ar: "Ø§ØªØµÙ„ Ø¨Ù†Ø§" },
+      href: "/contact"
     }
   ]
 };

@@ -1,5 +1,10 @@
+'use client'
+
 import { siteConfig } from '@/config/site'
-import { Calculator, ShieldCheck, Users, Briefcase, TrendingUp } from 'lucide-react'
+import { Calculator, ShieldCheck, Users, Briefcase, TrendingUp, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { cn } from '@/lib/utils'
 
 const services = [
   {
@@ -7,80 +12,165 @@ const services = [
     icon: Calculator,
     title: 'Comptabilité à Tunis',
     description: 'Tenue comptable, bilan, compte de résultat et suivi de votre activité à Tunis.',
+    href: '/nos-expertises/expertise-comptable',
+    className: 'md:col-span-2 md:row-span-2 bg-gradient-to-br from-white to-slate-50 dark:from-zinc-900 dark:to-zinc-950',
   },
   {
     id: 'tax',
     icon: ShieldCheck,
-    title: 'Fiscalité et optimisation fiscale',
+    title: 'Fiscalité & Optimisation',
     description: 'Déclarations fiscales, TVA, liasse fiscale et optimisation fiscale pour entreprises et freelances.',
+    href: '/nos-expertises/juridique-fiscal',
+    className: 'md:col-span-1 md:row-span-1',
   },
   {
     id: 'social',
     icon: Users,
-    title: 'Paie et gestion sociale',
+    title: 'Paie & Gestion sociale',
     description: 'Bulletins de salaire, déclarations sociales et accompagnement en gestion RH.',
+    href: '/nos-expertises/paie-social',
+    className: 'md:col-span-1 md:row-span-1',
   },
   {
     id: 'creation',
     icon: Briefcase,
-    title: 'Création d’entreprise à Tunis',
-    description: 'Accompagnement complet pour créer votre société à Tunis rapidement et en toute sécurité.',
+    title: "Création d'entreprise",
+    description: 'Accompagnement complet pour créer votre société à Tunis rapidement.',
+    href: '/investir-en-tunisie',
+    className: 'md:col-span-1 md:row-span-1',
   },
   {
     id: 'consulting',
     icon: TrendingUp,
-    title: 'Conseil et accompagnement stratégique',
-    description: 'Analyse financière, optimisation des coûts et accompagnement pour développer votre entreprise.',
+    title: 'Conseil Stratégique',
+    description: 'Analyse financière, optimisation des coûts et accompagnement.',
+    href: '/vos-metiers',
+    className: 'md:col-span-1 md:row-span-1',
   }
 ]
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+}
+
 export function Services() {
   return (
-    <section id="expertises" className="py-24 bg-slate-50 dark:bg-zinc-900/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">
-            Nos services d’expertise comptable à Tunis pour accompagner votre activité
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 mb-4">
-            Vous recherchez un expert-comptable à Tunis pour gérer votre comptabilité et optimiser votre fiscalité ? {siteConfig.name} accompagne les entrepreneurs, freelances et dirigeants dans toutes les étapes de leur activité : création d’entreprise, gestion comptable et conseil stratégique.
-          </p>
-          <p className="text-lg text-slate-600 dark:text-slate-400">
-            Notre objectif : vous faire gagner du temps, sécuriser votre entreprise et maximiser votre rentabilité grâce à un accompagnement personnalisé et réactif.
-          </p>
+    <section id="expertises" className="py-24 bg-white dark:bg-black relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-6"
+          >
+            Nos expertises pour propulser votre réussite
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg text-slate-600 dark:text-slate-400"
+          >
+            Un accompagnement sur-mesure combinant rigueur comptable et vision stratégique pour les entrepreneurs, freelances et dirigeants à Tunis.
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]"
+        >
           {services.map((service, index) => (
-            <div 
+            <motion.div 
               key={service.id}
-              className="group relative bg-white dark:bg-zinc-950 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-zinc-800 hover:-translate-y-1"
+              variants={itemVariants}
+              className={cn(
+                "group relative overflow-hidden rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200/50 dark:border-white/5",
+                "shadow-[0_2px_20px_rgb(0,0,0,0.04)] dark:shadow-none",
+                "hover:shadow-xl hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all duration-500",
+                service.className
+              )}
             >
-              <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                <service.icon className="w-6 h-6" />
+              {/* Hover gradient effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-blue-500/0 to-blue-500/0 group-hover:from-blue-50/50 group-hover:to-blue-100/50 dark:group-hover:from-blue-500/5 dark:group-hover:to-blue-500/10 transition-colors duration-500" />
+              
+              <Link href={service.href} className="absolute inset-0 z-10">
+                <span className="sr-only">Voir {service.title}</span>
+              </Link>
+
+              <div className={cn(
+                "relative h-full flex flex-col p-8",
+                index === 0 ? "justify-end" : ""
+              )}>
+                <div className={cn(
+                  "rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110",
+                  index === 0 
+                    ? "w-16 h-16 bg-blue-600 text-white shadow-lg shadow-blue-600/30 mb-8" 
+                    : "w-12 h-12 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400"
+                )}>
+                  <service.icon className={index === 0 ? "w-8 h-8" : "w-6 h-6"} />
+                </div>
+                
+                <h3 className={cn(
+                  "font-bold text-slate-900 dark:text-white mb-3",
+                  index === 0 ? "text-3xl" : "text-xl"
+                )}>
+                  {service.title}
+                </h3>
+                
+                <p className="text-slate-600 dark:text-slate-400 flex-1">
+                  {service.description}
+                </p>
+
+                <div className="mt-6 flex items-center text-blue-600 font-semibold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  En savoir plus <ArrowRight className="w-4 h-4 ml-1" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
-                {service.title}
-              </h3>
-              <p className="text-slate-600 dark:text-slate-400">
-                {service.description}
-              </p>
-            </div>
+            </motion.div>
           ))}
           
-          <div className="relative bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-2xl shadow-lg flex flex-col justify-center items-center text-center">
-            <h3 className="text-xl font-bold text-white mb-4">Prêt à démarrer ?</h3>
-            <p className="text-blue-100 mb-6">Contactez-nous pour un devis gratuit et personnalisé.</p>
-            <a 
-              href={siteConfig.contact.whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl bg-white text-blue-600 font-semibold hover:bg-slate-50 transition-colors shadow-sm"
-            >
-              Discuter sur WhatsApp
-            </a>
-          </div>
-        </div>
+          <motion.div 
+            variants={itemVariants}
+            className="md:col-span-1 md:row-span-1 group relative rounded-3xl bg-blue-600 overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-20 mix-blend-overlay group-hover:scale-110 transition-transform duration-700" />
+            <div className="relative h-full p-8 flex flex-col justify-center items-center text-center">
+              <h3 className="text-2xl font-bold text-white mb-4">Prêt à démarrer ?</h3>
+              <p className="text-blue-100 mb-6 font-medium">Obtenez une réponse rapide en quelques clics.</p>
+              <a 
+                href={siteConfig.contact.whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full inline-flex items-center justify-center px-6 py-4 rounded-xl bg-white text-blue-600 font-bold hover:bg-slate-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1"
+              >
+                Discuter sur WhatsApp
+              </a>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )
