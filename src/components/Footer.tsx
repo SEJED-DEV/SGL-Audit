@@ -40,6 +40,7 @@ export function Footer({ lang, dict }: FooterProps) {
                 alt={`${siteConfig.name} Logo`}
                 width={160}
                 height={53}
+                loading="lazy"
                 className="h-12 w-auto object-contain bg-white rounded-xl p-1.5 shadow-sm"
               />
             </Link>

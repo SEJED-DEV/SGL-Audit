@@ -1,8 +1,16 @@
 ﻿export const siteConfig = {
   name: "SGL Audit",
+  nameFull: "SGL Audit - Société d'Expertise Comptable",
   description: "Société d'expertise comptable inscrite au tableau de l'Ordre des Experts Comptables de Tunisie.",
   tagline: "Expert-comptable à Tunis: création d'entreprise, gestion comptable, conseils juridiques et fiscaux.",
   website: "https://sglaudit.com",
+  registration: {
+    order: "Ordre des Experts Comptables de Tunisie (OECT)",
+    number: "Inscrit au tableau de l'Ordre",
+    country: "Tunisie",
+  },
+  founded: "2009",
+  employees: "10-15",
   contact: {
     email: "direction@sglaudit.com",
     phone: "+216 98 297 521",
@@ -15,8 +23,8 @@
     googleMapsLink: "https://maps.google.com/?q=Bab+Khadhra+Tunis",
   },
   social: {
-    linkedin: "https://www.linkedin.com/",
-    facebook: "https://www.facebook.com/",
+    linkedin: "https://tn.linkedin.com/in/ridha-trabelsi-a34229173",
+    facebook: "https://www.facebook.com/cabinet.ridha.trabelsi",
     instagram: "https://www.instagram.com/",
   },
   developer: {

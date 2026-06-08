@@ -15,7 +15,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SGL Audit",
   other: {
-    'google-site-verification': 'google-site-verification', // Replace with your actual verification code if needed
+    'google-site-verification': 'google-site-verification',
+    'theme-color': '#1e40af',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    'format-detection': 'telephone=yes',
+    'referrer': 'origin-when-cross-origin',
   },
 };
 
@@ -60,8 +65,8 @@ const websiteJsonLd = {
         },
       ],
       sameAs: [
-        'https://www.linkedin.com/',
-        'https://www.facebook.com/',
+        'https://tn.linkedin.com/in/ridha-trabelsi-a34229173',
+        'https://www.facebook.com/cabinet.ridha.trabelsi',
       ],
     },
   ],
@@ -80,6 +85,8 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://sglaudit.com" />
+        <link rel="preload" href="/logo.png" as="image" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}

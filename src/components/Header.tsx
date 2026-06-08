@@ -106,6 +106,7 @@ export function Header({ lang, dict }: HeaderProps) {
               alt={`${siteConfig.name} Logo`}
               width={130}
               height={43}
+              fetchPriority="high"
               className={cn(
                 'h-9 w-auto object-contain transition-all duration-300 group-hover:scale-105 bg-white rounded-xl p-1 shadow-sm'
               )}
