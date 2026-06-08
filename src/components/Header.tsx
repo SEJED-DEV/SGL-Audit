@@ -25,6 +25,8 @@ export function Header({ lang, dict }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
 
+  const needsSolidBg = pathname.match(/^\/(en|fr)\/blogs($|\/)/) !== null
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0
     if (latest > previous && latest > 150) {
@@ -90,7 +92,7 @@ export function Header({ lang, dict }: HeaderProps) {
         transition={{ duration: 0.35, ease: 'easeInOut' }}
         className={cn(
           'fixed inset-x-0 z-50 flex flex-col items-center transition-all duration-500',
-          isScrolled || mobileMenuOpen
+          isScrolled || mobileMenuOpen || needsSolidBg
             ? 'bg-white/95 dark:bg-zinc-900/95 shadow-lg backdrop-blur-md py-2.5'
             : 'bg-transparent py-3',
           showTopBar ? 'top-9' : 'top-0'
@@ -127,10 +129,10 @@ export function Header({ lang, dict }: HeaderProps) {
                     <button
                       className={cn(
                         'flex items-center gap-1 rounded-lg px-3 xl:px-4 py-2 text-[14px] font-medium transition-colors relative',
-                        isScrolled
+                        isScrolled || needsSolidBg
                           ? 'text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-zinc-800'
                           : 'text-white/90 hover:text-white hover:bg-white/10',
-                        (active || childActive) && (isScrolled ? 'text-blue-600 dark:text-blue-400' : 'text-white')
+                        (active || childActive) && (isScrolled || needsSolidBg ? 'text-blue-600 dark:text-blue-400' : 'text-white')
                       )}
                     >
                       {itemName}
@@ -181,10 +183,10 @@ export function Header({ lang, dict }: HeaderProps) {
                   href={`/${lang}${item.href}`}
                   className={cn(
                     'relative px-3 xl:px-4 py-2 text-[14px] font-medium transition-colors rounded-lg',
-                    isScrolled
+                    isScrolled || needsSolidBg
                       ? 'text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-zinc-800'
                       : 'text-white/90 hover:text-white hover:bg-white/10',
-                    active && (isScrolled
+                    active && (isScrolled || needsSolidBg
                       ? 'text-blue-600 dark:text-blue-400'
                       : 'text-white bg-white/10')
                   )}
@@ -225,7 +227,7 @@ export function Header({ lang, dict }: HeaderProps) {
             <button
               className={cn(
                 'lg:hidden p-2 rounded-lg transition-colors',
-                isScrolled || mobileMenuOpen ? 'text-slate-900 dark:text-white' : 'text-white'
+                isScrolled || mobileMenuOpen || needsSolidBg ? 'text-slate-900 dark:text-white' : 'text-white'
               )}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
