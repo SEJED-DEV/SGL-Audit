@@ -5,7 +5,7 @@ import { InvestInTunisia } from '@/components/InvestInTunisia'
 import { ExtraServices } from '@/components/ExtraServices'
 import { ContactForm } from '@/components/ContactForm'
 import { siteConfig } from '@/config/site'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, Phone, MapPin, Globe } from 'lucide-react'
 
 export default async function Home({
   params,
@@ -51,12 +51,26 @@ export default async function Home({
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-blue-600">
+                    <Globe className="h-6 w-6" />
+                  </div>
+                  <div className="pt-1">
+                    <h4 className="font-bold mb-1 uppercase text-xs tracking-widest text-slate-500">Site web</h4>
+                    <a href={siteConfig.website} target="_blank" rel="noreferrer" className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                      sglaudit.tn
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-blue-600">
                     <Phone className="h-6 w-6" />
                   </div>
                   <div className="pt-1">
                     <h4 className="font-bold mb-1 uppercase text-xs tracking-widest text-slate-500">Phone / WhatsApp</h4>
                     <a href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`} className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors block mb-1">
                       {siteConfig.contact.phone}
+                    </a>
+                    <a href={`tel:${siteConfig.contact.phone2.replace(/\s+/g, '')}`} className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors block mb-1">
+                      {siteConfig.contact.phone2}
                     </a>
                     <a href={siteConfig.contact.whatsappLink} target="_blank" rel="noreferrer" className="text-md font-semibold text-green-600 hover:text-green-500 transition-colors">
                       {siteConfig.contact.whatsapp}

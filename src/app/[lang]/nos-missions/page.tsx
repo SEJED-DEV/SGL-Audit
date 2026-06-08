@@ -1,5 +1,22 @@
 import { siteConfig } from '@/config/site'
+import type { Metadata } from 'next'
 import { CheckCircle2, Calculator, Users, Scale, Zap, Shield, Smartphone } from 'lucide-react'
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const title = lang === 'fr' ? 'Nos Missions d\'Expertise Comptable à Tunis' : 'Our Accounting Expertise Missions in Tunis'
+  const description = lang === 'fr'
+    ? "Découvrez nos missions : expertise comptable, gestion de paie, conseil juridique et fiscal. SGL Audit vous accompagne à Tunis."
+    : "Discover our missions: accounting expertise, payroll management, legal and tax consulting. SGL Audit supports you in Tunis."
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://sglaudit.tn/${lang}/nos-missions`,
+    },
+    openGraph: { title, description },
+  }
+}
 
 export default async function NosMissionsPage({
   params,

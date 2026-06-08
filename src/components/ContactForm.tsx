@@ -14,7 +14,7 @@ export function ContactForm({ lang }: { lang: string }) {
     const email = formData.get('email')
     const message = formData.get('message')
 
-    const mailtoUrl = `mailto:directeur@sglaudit.com?subject=Contact from ${name}&body=${message}%0D%0A%0D%0AFrom: ${name} (${email})`
+    const mailtoUrl = `mailto:direction@sglaudit.com?subject=Contact from ${name}&body=${message}%0D%0A%0D%0AFrom: ${name} (${email})`
     window.location.href = mailtoUrl
 
     setStatus('success')
@@ -22,7 +22,7 @@ export function ContactForm({ lang }: { lang: string }) {
 
   if (status === 'success') {
     return (
-      <div className="p-8 bg-success/10 border border-success rounded-xl text-center">
+      <div className="p-8 bg-green-50 dark:bg-green-900/10 border border-green-500 rounded-xl text-center">
         <h3 className="text-xl font-bold mb-2">
           {lang === 'fr' ? 'Merci !' : 'Thank you!'}
         </h3>
@@ -46,7 +46,7 @@ export function ContactForm({ lang }: { lang: string }) {
             required
             name="name"
             type="text"
-            className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
           />
         </div>
         <div>
@@ -57,7 +57,7 @@ export function ContactForm({ lang }: { lang: string }) {
             required
             name="email"
             type="email"
-            className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
           />
         </div>
       </div>
@@ -69,12 +69,12 @@ export function ContactForm({ lang }: { lang: string }) {
           required
           name="message"
           rows={5}
-          className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+          className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
         ></textarea>
       </div>
       <button
         type="submit"
-        className="w-full py-4 bg-primary text-primary-foreground font-bold rounded-md hover:bg-primary/90 transition-all uppercase tracking-widest"
+        className="w-full py-4 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 transition-all uppercase tracking-widest"
       >
         {lang === 'fr' ? 'Envoyer' : 'Send'}
       </button>

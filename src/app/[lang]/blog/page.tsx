@@ -1,11 +1,23 @@
 import { siteConfig } from '@/config/site'
 import { blogs } from '@/config/blogs'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { ArrowRight, BookOpen } from 'lucide-react'
 
-export const metadata = {
-  title: `Blog - ${siteConfig.name}`,
-  description: "Actualités, conseils et informations sur la comptabilité, la fiscalité et la gestion d'entreprise.",
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const title = lang === 'fr' ? 'Blog - Actualités Comptables & Fiscales' : 'Blog - Accounting & Tax News'
+  const description = lang === 'fr'
+    ? "Actualités, conseils et informations sur la comptabilité, la fiscalité, la paie et la gestion d'entreprise en Tunisie."
+    : "News, advice and information on accounting, taxation, payroll and business management in Tunisia."
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://sglaudit.tn/${lang}/blog`,
+    },
+    openGraph: { title, description },
+  }
 }
 
 export default async function BlogPage({

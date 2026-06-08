@@ -8,7 +8,7 @@ const features = [
   {
     icon: Building2,
     title: "Création d'entreprise à Tunis",
-    description: "Choisissez le type d’entreprise adapté à votre projet : SASU, SAS, SARL, EURL, micro-entreprise ou entreprise individuelle (EI). Nous guidons chaque étape, de la formalisation juridique à l’immatriculation.",
+    description: "Choisissez le type d'entreprise adapté à votre projet : SARL, SARL Unipersonnelle, SA, SNC ou entreprise individuelle. Nous guidons chaque étape, de la formalisation juridique à l'immatriculation.",
     color: "from-blue-500 to-indigo-500"
   },
   {

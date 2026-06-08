@@ -5,6 +5,7 @@ import { Providers } from "@/components/Providers";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { getDictionary } from "@/lib/get-dictionary";
+import { siteConfig } from "@/config/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,10 +17,58 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "SGL Audit - Expertise Comptable & Audit",
-  description: "Cabinet d'expertise comptable et d'audit à votre service.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+
+  const title = lang === 'fr'
+    ? "SGL Audit - Cabinet d'Expertise Comptable à Tunis"
+    : "SGL Audit - Accounting Firm in Tunis"
+
+  const description = lang === 'fr'
+    ? "Cabinet d'expertise comptable inscrit à l'Ordre des Experts Comptables de Tunisie. Création d'entreprise, comptabilité, fiscalité, paie et conseil juridique à Tunis."
+    : "Accounting firm registered with the Order of Chartered Accountants of Tunisia. Business creation, accounting, tax, payroll and legal consulting in Tunis."
+
+  return {
+    title: {
+      default: title,
+      template: `%s | SGL Audit`,
+    },
+    description,
+    metadataBase: new URL('https://sglaudit.tn'),
+    alternates: {
+      canonical: `https://sglaudit.tn/${lang}`,
+      languages: {
+        'fr': 'https://sglaudit.tn/fr',
+        'en': 'https://sglaudit.tn/en',
+      },
+    },
+
+    icons: {
+      icon: '/logo.png',
+      apple: '/logo.png',
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      type: 'website',
+      locale: lang === 'fr' ? 'fr_FR' : 'en_US',
+      alternateLocale: lang === 'fr' ? 'en_US' : 'fr_FR',
+      siteName: siteConfig.name,
+      title,
+      description,
+      url: `https://sglaudit.tn/${lang}`,
+      images: [{ url: 'https://sglaudit.tn/logo.png', width: 160, height: 53 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['https://sglaudit.tn/logo.png'],
+    },
+  }
+}
 
 export default async function RootLayout({
   children,
@@ -31,12 +80,44 @@ export default async function RootLayout({
   const { lang } = await params;
   const dict = await getDictionary(lang as 'en' | 'fr');
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'AccountingService',
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: `https://sglaudit.tn/${lang}`,
+    telephone: [siteConfig.contact.phone, siteConfig.contact.phone2],
+    email: siteConfig.contact.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Bab Khadhra',
+      addressLocality: 'Tunis',
+      addressCountry: 'TN',
+      postalCode: '1006',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Tunisia',
+    },
+    priceRange: '$$',
+    sameAs: [
+      siteConfig.social.linkedin,
+    ],
+    image: 'https://sglaudit.tn/logo.png',
+  }
+
   return (
     <html
       lang={lang}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
         <Providers>
           <Header lang={lang} dict={dict} />

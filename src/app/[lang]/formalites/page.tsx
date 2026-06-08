@@ -1,9 +1,21 @@
 import { siteConfig } from '@/config/site'
+import type { Metadata } from 'next'
 import { ExtraServices } from '@/components/ExtraServices'
 
-export const metadata = {
-  title: `Formalités - ${siteConfig.name}`,
-  description: "Démarches administratives, recrutement, résidence et séjour.",
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const title = lang === 'fr' ? 'Formalités Administratives & Démarches en Tunisie' : 'Administrative Formalities & Procedures in Tunisia'
+  const description = lang === 'fr'
+    ? "Accompagnement dans vos formalités en Tunisie : autorisation de travail, recrutement, résidence, séjour et fiscalité internationale."
+    : "Support for your formalities in Tunisia: work permits, recruitment, residence, stay and international taxation."
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://sglaudit.tn/${lang}/formalites`,
+    },
+    openGraph: { title, description },
+  }
 }
 
 export default async function FormalitesPage({

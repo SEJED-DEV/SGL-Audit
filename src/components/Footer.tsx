@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { siteConfig } from '@/config/site'
-import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
+import { Mail, Phone, MapPin, ArrowRight, Globe } from 'lucide-react'
 
 interface FooterProps {
   lang: string
@@ -28,8 +28,11 @@ export function Footer({ lang, dict }: FooterProps) {
                 className="h-14 w-auto object-contain bg-white rounded-2xl p-2 shadow-sm"
               />
             </Link>
-            <p className="text-slate-400 leading-relaxed mb-8 max-w-sm">
+            <p className="text-slate-400 leading-relaxed mb-2 max-w-sm">
               {siteConfig.description}
+            </p>
+            <p className="text-slate-500 text-sm leading-relaxed mb-8 max-w-sm">
+              {siteConfig.tagline}
             </p>
             <div className="flex gap-4">
               <a href={siteConfig.social?.linkedin || '#'} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all duration-300">
@@ -107,12 +110,26 @@ export function Footer({ lang, dict }: FooterProps) {
               </li>
               <li className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center flex-shrink-0 text-blue-500">
+                  <Globe className="w-4 h-4" />
+                </div>
+                <div className="flex flex-col pt-1">
+                  <span className="text-xs text-slate-500 uppercase tracking-wider mb-1">Site web</span>
+                  <a href={siteConfig.website} target="_blank" rel="noreferrer" className="text-slate-300 hover:text-blue-400 transition-colors text-sm">
+                    sglaudit.tn
+                  </a>
+                </div>
+              </li>
+              <li className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center flex-shrink-0 text-blue-500">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col pt-1">
                   <span className="text-xs text-slate-500 uppercase tracking-wider mb-1">Téléphone / WhatsApp</span>
                   <a href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`} className="text-slate-300 hover:text-blue-400 transition-colors text-sm">
                     {siteConfig.contact.phone}
+                  </a>
+                  <a href={`tel:${siteConfig.contact.phone2.replace(/\s+/g, '')}`} className="text-slate-300 hover:text-blue-400 transition-colors text-sm">
+                    {siteConfig.contact.phone2}
                   </a>
                 </div>
               </li>

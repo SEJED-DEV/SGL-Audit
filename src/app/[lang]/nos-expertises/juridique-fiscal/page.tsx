@@ -1,10 +1,22 @@
 import { siteConfig } from '@/config/site'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { Scale, CheckCircle2, MessageCircle, ArrowLeft } from 'lucide-react'
 
-export const metadata = {
-  title: `Juridique & Fiscal - ${siteConfig.name}`,
-  description: "Secrétariat juridique, création de société, conseil fiscal et audit fiscal à Tunis.",
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const title = lang === 'fr' ? 'Conseil Juridique & Fiscal à Tunis - SGL Audit' : 'Legal & Tax Consulting in Tunis - SGL Audit'
+  const description = lang === 'fr'
+    ? "Secrétariat juridique, création de société (SARL, SA), conseil fiscal et audit à Tunis. Optimisez votre fiscalité avec SGL Audit."
+    : "Corporate secretary, company creation (SARL, SA), tax consulting and audit in Tunis. Optimize your taxation with SGL Audit."
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://sglaudit.tn/${lang}/nos-expertises/juridique-fiscal`,
+    },
+    openGraph: { title, description },
+  }
 }
 
 export default async function JuridiqueFiscalPage({
@@ -53,7 +65,7 @@ export default async function JuridiqueFiscalPage({
               <ul className="space-y-4">
                 {[
                   { title: "Secrétariat juridique", desc: "Organisation de vos assemblées générales ordinaires et extraordinaires, rédaction des procès-verbaux." },
-                  { title: "Création de société", desc: "Accompagnement complet pour la création de votre structure juridique (SARL, SAS, SASU…)." },
+                  { title: "Création de société", desc: "Accompagnement complet pour la création de votre structure juridique (SARL, SARL Unipersonnelle, SA…)." },
                   { title: "Modification de société", desc: "Transfert de siège, augmentation de capital, changement de gérant, modification des statuts." },
                   { title: "Dissolution et liquidation", desc: "Gestion administrative et juridique de la dissolution amiable ou judiciaire de votre société." },
                 ].map((item, i) => (

@@ -1,10 +1,22 @@
 import { siteConfig } from '@/config/site'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { Calculator, CheckCircle2, MessageCircle, ArrowLeft } from 'lucide-react'
 
-export const metadata = {
-  title: `Expertise Comptable - ${siteConfig.name}`,
-  description: "Tenue de comptabilité, révision, comptes annuels et reporting financier à Tunis.",
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const title = lang === 'fr' ? 'Expertise Comptable à Tunis - Tenue & Révision' : 'Accounting Expertise in Tunis - Bookkeeping & Audit'
+  const description = lang === 'fr'
+    ? "Tenue de comptabilité, révision, bilan, déclarations fiscales et reporting à Tunis. Externalisez votre comptabilité avec SGL Audit, expert-comptable inscrit à l'Ordre."
+    : "Bookkeeping, audit, financial statements, tax returns and reporting in Tunis. Outsource your accounting with SGL Audit."
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://sglaudit.tn/${lang}/nos-expertises/expertise-comptable`,
+    },
+    openGraph: { title, description },
+  }
 }
 
 export default async function ExpertiseComptablePage({

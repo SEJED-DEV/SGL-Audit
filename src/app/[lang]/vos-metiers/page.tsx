@@ -1,10 +1,22 @@
 import { siteConfig } from '@/config/site'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { Briefcase, MessageCircle, ArrowRight } from 'lucide-react'
 
-export const metadata = {
-  title: `Vos Métiers - ${siteConfig.name}`,
-  description: "Notre cabinet accompagne tous les secteurs d'activité : startups, associations, professions libérales, restauration, commerce et plus.",
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const title = lang === 'fr' ? 'Expertise Comptable par Secteur d\'Activité à Tunis' : 'Accounting Expertise by Business Sector in Tunis'
+  const description = lang === 'fr'
+    ? "SGL Audit accompagne tous les secteurs à Tunis : startups, associations, freelances, professions de santé, artisans, restauration, commerce et plus."
+    : "SGL Audit supports all sectors in Tunis: startups, associations, freelancers, healthcare professionals, craftsmen, restaurants, retail and more."
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://sglaudit.tn/${lang}/vos-metiers`,
+    },
+    openGraph: { title, description },
+  }
 }
 
 const sectors = [

@@ -1,10 +1,22 @@
 import { siteConfig } from '@/config/site'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { Users, CheckCircle2, MessageCircle, ArrowLeft } from 'lucide-react'
 
-export const metadata = {
-  title: `Paie & Social - ${siteConfig.name}`,
-  description: "Gestion de la paie, déclarations sociales, contrats de travail et conseil en droit social.",
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const title = lang === 'fr' ? 'Gestion de Paie & Social à Tunis - SGL Audit' : 'Payroll & Social Management in Tunis - SGL Audit'
+  const description = lang === 'fr'
+    ? "Externalisez votre paie et gestion sociale à Tunis. Bulletins de salaire, déclarations sociales, contrats de travail et conseil en droit social."
+    : "Outsource your payroll and social management in Tunis. Pay slips, social declarations, employment contracts and social law consulting."
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://sglaudit.tn/${lang}/nos-expertises/paie-social`,
+    },
+    openGraph: { title, description },
+  }
 }
 
 export default async function PaieSocialPage({

@@ -1,10 +1,22 @@
 import { siteConfig } from '@/config/site'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { Calculator, Users, Scale, ArrowRight, MessageCircle } from 'lucide-react'
 
-export const metadata = {
-  title: `Nos Expertises - ${siteConfig.name}`,
-  description: "Un accompagnement à 360° : expertise comptable, paie & social, juridique & fiscal.",
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const title = lang === 'fr' ? 'Nos Expertises Comptables, Sociales & Fiscales à Tunis' : 'Our Accounting, Social & Tax Expertise in Tunis'
+  const description = lang === 'fr'
+    ? "Expertise comptable, gestion de paie, conseil juridique et fiscal à Tunis. Un accompagnement 360° pour votre entreprise par SGL Audit."
+    : "Accounting expertise, payroll management, legal and tax consulting in Tunis. 360° support for your business by SGL Audit."
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://sglaudit.tn/${lang}/nos-expertises`,
+    },
+    openGraph: { title, description },
+  }
 }
 
 const expertises = [

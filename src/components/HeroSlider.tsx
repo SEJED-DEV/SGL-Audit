@@ -26,7 +26,7 @@ const slides = [
   {
     id: 3,
     title: "Formalités & démarches",
-    description: "Notre cabinet vous accompagne dans toutes les formalités de création d'entreprise en Tunisie : immatriculation rapide, obtention du SIREN / SIRET, domiciliation, ouverture de compte bancaire professionnel et conformité fiscale. Simplifiez vos démarches et lancez votre activité en toute sérénité.",
+    description: "Notre cabinet vous accompagne dans toutes les formalités de création d'entreprise en Tunisie : immatriculation rapide, obtention du registre du commerce, domiciliation, ouverture de compte bancaire professionnel et conformité fiscale. Simplifiez vos démarches et lancez votre activité en toute sérénité.",
     image: "https://images.unsplash.com/photo-1450101499163-c8848c66cb85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
     button: "Voir les formalités",
     href: "/formalites"

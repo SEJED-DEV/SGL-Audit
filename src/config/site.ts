@@ -1,15 +1,18 @@
 ﻿export const siteConfig = {
   name: "SGL Audit",
-  description: "Expert-comptable en Tunisie: création d'entreprise, gestion comptable, conseils juridiques et fiscaux.",
+  description: "Société d'expertise comptable inscrite au tableau de l'Ordre des Experts Comptables de Tunisie.",
+  tagline: "Expert-comptable à Tunis: création d'entreprise, gestion comptable, conseils juridiques et fiscaux.",
+  website: "https://sglaudit.tn",
   contact: {
     email: "direction@sglaudit.com",
     phone: "+216 98 297 521",
+    phone2: "+216 90 475 235",
     whatsapp: "+216 98 297 521",
     whatsappLink: "https://wa.me/21698297521"
   },
   location: {
-    address: "Tunis, Tunisie",
-    googleMapsLink: "https://maps.google.com/?q=Tunis",
+    address: "Bab Khadhra 1006 Tunis",
+    googleMapsLink: "https://maps.google.com/?q=Bab+Khadhra+Tunis",
   },
   social: {
     linkedin: "https://www.linkedin.com/",

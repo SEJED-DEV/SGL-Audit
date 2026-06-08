@@ -1,10 +1,22 @@
 import { siteConfig } from '@/config/site'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import { Building2, Globe, UserPlus, CheckCircle2, ArrowRight, MessageCircle } from 'lucide-react'
 
-export const metadata = {
-  title: `Investir en Tunisie - ${siteConfig.name}`,
-  description: "Création d'entreprise, acquisition de société et services pour non-résidents en Tunisie.",
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params
+  const title = lang === 'fr' ? 'Investir en Tunisie - Création & Acquisition d\'Entreprise' : 'Invest in Tunisia - Business Creation & Acquisition'
+  const description = lang === 'fr'
+    ? "Accompagnement pour investir en Tunisie : création d'entreprise (SARL, SA), acquisition de société, services pour non-résidents. SGL Audit à Tunis."
+    : "Support for investing in Tunisia: company creation (SARL, SA), business acquisition, services for non-residents. SGL Audit in Tunis."
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `https://sglaudit.tn/${lang}/investir-en-tunisie`,
+    },
+    openGraph: { title, description },
+  }
 }
 
 const features = [
@@ -14,7 +26,7 @@ const features = [
     href: "/nos-expertises/expertise-comptable",
     description: "Choisissez le type d'entreprise adapté à votre projet. Nous guidons chaque étape, de la formalisation juridique à l'immatriculation.",
     points: [
-      "SASU, SAS, SARL, EURL, micro-entreprise",
+      "SARL, SARL Unipersonnelle, SA, SNC",
       "Entreprise individuelle (EI)",
       "Immatriculation rapide et sécurisée",
       "Accompagnement business plan",
