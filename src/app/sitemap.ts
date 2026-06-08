@@ -1,11 +1,10 @@
 import type { MetadataRoute } from 'next'
+import { blogs } from '@/config/blogs'
 
 const BASE_URL = 'https://sglaudit.com'
 
-const routes = [
+const staticRoutes = [
   '',
-  '/blog',
-  '/blogs',
   '/contact',
   '/formalites',
   '/investir-en-tunisie',
@@ -20,18 +19,53 @@ const routes = [
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const languages = { fr: 'fr', en: 'en' }
+  const entries: MetadataRoute.Sitemap = []
 
-  return routes.map((route) => ({
-    url: `${BASE_URL}/fr${route}`,
-    lastModified: new Date(),
-    changeFrequency: route === '' ? 'weekly' : 'monthly',
-    priority: route === '' ? 1 : route === '/contact' ? 0.9 : 0.8,
-    alternates: {
-      languages: {
-        fr: `${BASE_URL}/fr${route}`,
-        en: `${BASE_URL}/en${route}`,
-      },
-    },
-  }))
+  for (const route of staticRoutes) {
+    entries.push({
+      url: `${BASE_URL}/fr${route}`,
+      lastModified: new Date(),
+      changeFrequency: route === '' ? 'weekly' : 'monthly',
+      priority: route === '' ? 1 : route === '/contact' ? 0.9 : 0.7,
+    })
+    entries.push({
+      url: `${BASE_URL}/en${route}`,
+      lastModified: new Date(),
+      changeFrequency: route === '' ? 'weekly' : 'monthly',
+      priority: route === '' ? 0.9 : route === '/contact' ? 0.8 : 0.6,
+    })
+  }
+
+  const blogRoutes = ['/blog', '/blogs']
+  for (const route of blogRoutes) {
+    entries.push({
+      url: `${BASE_URL}/fr${route}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    })
+    entries.push({
+      url: `${BASE_URL}/en${route}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    })
+  }
+
+  for (const post of blogs) {
+    entries.push({
+      url: `${BASE_URL}/fr/blogs/${post.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    })
+    entries.push({
+      url: `${BASE_URL}/en/blogs/${post.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    })
+  }
+
+  return entries
 }

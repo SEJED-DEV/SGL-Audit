@@ -21,8 +21,69 @@ export default async function Home({
   const { lang } = await params
   const dict = await getDictionary(lang as 'en' | 'fr')
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: lang === 'fr' ? "Quels sont les avantages de faire appel à un expert-comptable à Tunis ?" : "What are the benefits of using an accountant in Tunis?",
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: lang === 'fr'
+            ? "Faire appel à SGL Audit, expert-comptable à Tunis, vous garantit une conformité totale avec la législation tunisienne tout en optimisant votre situation fiscale. Notre accompagnement personnalisé vous permet de piloter efficacement votre activité."
+            : "Using SGL Audit, an accountant in Tunis, guarantees full compliance with Tunisian legislation while optimizing your tax situation."
+        }
+      },
+      {
+        '@type': 'Question',
+        name: lang === 'fr' ? "Quels sont les différents types de sociétés que je peux créer en Tunisie ?" : "What types of companies can I create in Tunisia?",
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: lang === 'fr'
+            ? "Vous pouvez créer une SARL, SARL Unipersonnelle, SA, SNC ou entreprise individuelle. Le choix dépend de votre projet, de votre budget et de vos objectifs."
+            : "You can create an LLC, Sole Proprietorship LLC, Corporation, Partnership or Individual Enterprise."
+        }
+      },
+      {
+        '@type': 'Question',
+        name: lang === 'fr' ? "Un étranger peut-il créer une entreprise en Tunisie ?" : "Can a foreigner create a company in Tunisia?",
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: lang === 'fr'
+            ? "Oui, un entrepreneur étranger peut créer une entreprise en Tunisie. Des services spécifiques sont disponibles : création d'entreprise, domiciliation à Tunis, et représentation fiscale."
+            : "Yes, a foreign entrepreneur can create a company in Tunisia. Specific services are available: company creation, domiciliation in Tunis, and tax representation."
+        }
+      },
+      {
+        '@type': 'Question',
+        name: lang === 'fr' ? "Qu'est-ce qu'une société étagère (Shelf Company) ?" : "What is a Shelf Company?",
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: lang === 'fr'
+            ? "Une société étagère est une société déjà constituée et immatriculée, restée inactive, prête à être reprise immédiatement."
+            : "A shelf company is an already incorporated and registered company that has remained inactive, ready to be taken over immediately."
+        }
+      },
+      {
+        '@type': 'Question',
+        name: lang === 'fr' ? "Comment se déroule la gestion de la paie externalisée ?" : "How does outsourced payroll management work?",
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: lang === 'fr'
+            ? "Nous prenons en charge l'édition des bulletins de salaire, les déclarations sociales (CNSS), la gestion des entrées et sorties du personnel et le conseil en droit social."
+            : "We handle the preparation of pay slips, social declarations (CNSS), management of employee entries and departures, and social law advice."
+        }
+      }
+    ]
+  }
+
   return (
     <div className="flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <HeroSlider lang={lang} dict={dict} />
       <Services lang={lang} />
       <StatsSection lang={lang} />

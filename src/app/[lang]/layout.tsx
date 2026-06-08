@@ -3,6 +3,7 @@ import { Providers } from "@/components/Providers";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ContextMenu } from "@/components/ContextMenu";
+import { WhatsAppWidget } from "@/components/WhatsAppWidget";
 import { getDictionary } from "@/lib/get-dictionary";
 import { siteConfig } from "@/config/site";
 
@@ -71,7 +72,7 @@ export default async function RootLayout({
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'AccountingService',
+    '@type': ['AccountingService', 'LocalBusiness'],
     name: siteConfig.name,
     description: siteConfig.description,
     url: `https://sglaudit.com/${lang}`,
@@ -93,6 +94,16 @@ export default async function RootLayout({
       siteConfig.social.linkedin,
     ],
     image: 'https://sglaudit.com/logo.png',
+    openingHoursSpecification: [
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Monday', opens: '08:00', closes: '18:00' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Tuesday', opens: '08:00', closes: '18:00' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Wednesday', opens: '08:00', closes: '18:00' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '08:00', closes: '18:00' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday', opens: '08:00', closes: '17:00' },
+    ],
+    hasMap: 'https://maps.google.com/?q=Bab+Khadhra+Tunis',
+    currenciesAccepted: 'TND',
+    paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer'],
   }
 
   return (
@@ -102,6 +113,7 @@ export default async function RootLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Providers>
+        <WhatsAppWidget />
         <ContextMenu lang={lang} />
         <Header lang={lang} dict={dict} />
         <div className="flex-1">

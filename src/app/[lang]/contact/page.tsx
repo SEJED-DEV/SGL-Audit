@@ -115,11 +115,25 @@ export default async function ContactPage({
               </div>
             </div>
 
-            <div className="bg-slate-50 dark:bg-zinc-950 p-8 sm:p-12 rounded-3xl border border-slate-200 dark:border-zinc-800 shadow-xl">
-              <h3 className="text-2xl font-bold mb-8 text-slate-900 dark:text-white">
-                {isFr ? 'Envoyez-nous un message' : 'Send us a message'}
-              </h3>
-              <ContactForm lang={lang} />
+            <div className="space-y-8">
+              <div className="rounded-3xl overflow-hidden border border-slate-200 dark:border-zinc-800 shadow-xl h-64">
+                <iframe
+                  src="https://www.google.com/maps?q=Bab+Khadhra+Tunis&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="SGL Audit - Bab Khadhra, Tunis"
+                />
+              </div>
+              <div className="bg-slate-50 dark:bg-zinc-950 p-8 sm:p-12 rounded-3xl border border-slate-200 dark:border-zinc-800 shadow-xl">
+                <h3 className="text-2xl font-bold mb-8 text-slate-900 dark:text-white">
+                  {isFr ? 'Envoyez-nous un message' : 'Send us a message'}
+                </h3>
+                <ContactForm lang={lang} />
+              </div>
             </div>
           </div>
         </div>
