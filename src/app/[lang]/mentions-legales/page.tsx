@@ -42,6 +42,12 @@ export default async function MentionsLegalesPage({
             Email : {siteConfig.contact.email}<br />
             Site web : <a href={siteConfig.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">sglaudit.com</a>
           </p>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-4 pt-4 border-t border-slate-200 dark:border-zinc-700">
+            <strong>Publication :</strong> {siteConfig.developer.name}<br />
+            Tél : {siteConfig.developer.phone}<br />
+            Email : {siteConfig.developer.email}<br />
+            Site web : <a href={siteConfig.developer.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{siteConfig.developer.website}</a>
+          </p>
         </>
       ) : (
         <>
@@ -57,6 +63,12 @@ export default async function MentionsLegalesPage({
             Phone: {siteConfig.contact.phone} / {siteConfig.contact.phone2}<br />
             Email: {siteConfig.contact.email}<br />
             Website: <a href={siteConfig.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">sglaudit.com</a>
+          </p>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-4 pt-4 border-t border-slate-200 dark:border-zinc-700">
+            <strong>Publication:</strong> {siteConfig.developer.name}<br />
+            Phone: {siteConfig.developer.phone}<br />
+            Email: {siteConfig.developer.email}<br />
+            Website: <a href={siteConfig.developer.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{siteConfig.developer.website}</a>
           </p>
         </>
       ),
@@ -103,27 +115,6 @@ export default async function MentionsLegalesPage({
       ) : (
         <p>
           {siteConfig.name} strives to ensure the accuracy and currency of the information published on this site and reserves the right to correct the content at any time without notice. However, {siteConfig.name} cannot guarantee the accuracy, precision, or completeness of the information made available on this site.
-        </p>
-      ),
-    },
-    {
-      number: '5',
-      title: isFr ? 'Conception & Développement' : 'Design & Development',
-      content: isFr ? (
-        <p>
-          Ce site a été conçu et développé par :<br />
-          <strong>{siteConfig.developer.name}</strong><br />
-          Site web : <a href={siteConfig.developer.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{siteConfig.developer.website}</a><br />
-          Email : {siteConfig.developer.email}<br />
-          Téléphone : {siteConfig.developer.phone}
-        </p>
-      ) : (
-        <p>
-          This website was designed and developed by:<br />
-          <strong>{siteConfig.developer.name}</strong><br />
-          Website: <a href={siteConfig.developer.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{siteConfig.developer.website}</a><br />
-          Email: {siteConfig.developer.email}<br />
-          Phone: {siteConfig.developer.phone}
         </p>
       ),
     },

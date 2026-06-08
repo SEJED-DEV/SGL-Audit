@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Globe, Building2, UserPlus, ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
@@ -10,19 +11,22 @@ const featuresData = {
       icon: Building2,
       title: "Création d'entreprise à Tunis",
       description: "Choisissez le type d'entreprise adapté à votre projet : SARL, SARL Unipersonnelle, SA, SNC ou entreprise individuelle. Nous guidons chaque étape, de la formalisation juridique à l'immatriculation.",
-      color: "from-blue-500 to-indigo-500"
+      color: "from-blue-500 to-indigo-500",
+      href: "/formalites"
     },
     {
       icon: Globe,
       title: "Acheter une entreprise à Tunis",
       description: "Vous souhaitez acquérir une entreprise existante ? Explorez les options pour acheter une société étagère (Shelf Company), reprendre une entreprise déjà établie ou acquérir un fonds de commerce.",
-      color: "from-indigo-500 to-purple-500"
+      color: "from-indigo-500 to-purple-500",
+      href: "/investir-en-tunisie"
     },
     {
       icon: UserPlus,
       title: "Services pour non-résidents",
       description: "Si vous êtes étranger, nous proposons des services spécifiques : création d'entreprise, domiciliation à Tunis, et représentation fiscale par un mandataire en Tunisie.",
-      color: "from-purple-500 to-pink-500"
+      color: "from-purple-500 to-pink-500",
+      href: "/investir-en-tunisie"
     }
   ],
   en: [
@@ -30,19 +34,22 @@ const featuresData = {
       icon: Building2,
       title: 'Business Creation in Tunis',
       description: "Choose the type of company that suits your project: LLC, Sole Proprietorship, Corporation, Partnership or Individual Enterprise. We guide each step from legal formalization to registration.",
-      color: "from-blue-500 to-indigo-500"
+      color: "from-blue-500 to-indigo-500",
+      href: "/formalites"
     },
     {
       icon: Globe,
       title: 'Buy a Business in Tunis',
       description: 'Want to acquire an existing business? Explore options to buy a shelf company, take over an established business or acquire goodwill.',
-      color: "from-indigo-500 to-purple-500"
+      color: "from-indigo-500 to-purple-500",
+      href: "/investir-en-tunisie"
     },
     {
       icon: UserPlus,
       title: 'Services for Non-Residents',
       description: 'If you are a foreigner, we offer specific services: company creation, domiciliation in Tunis, and tax representation through a tax agent in Tunisia.',
-      color: "from-purple-500 to-pink-500"
+      color: "from-purple-500 to-pink-500",
+      href: "/investir-en-tunisie"
     }
   ]
 }
@@ -120,7 +127,7 @@ export function InvestInTunisia({ lang }: { lang?: string }) {
               >
                 <div className="absolute -inset-px bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500" />
                 
-                <div className="relative p-8 md:p-10 rounded-3xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-xl shadow-slate-200/20 dark:shadow-none h-full flex flex-col items-start overflow-hidden">
+                <Link href={`/${lang}${feature.href}`} className="relative block p-8 md:p-10 rounded-3xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-xl shadow-slate-200/20 dark:shadow-none h-full overflow-hidden">
                   
                   <div className={cn("absolute top-0 left-0 right-0 h-1 bg-gradient-to-r", feature.color)} />
 
@@ -140,10 +147,10 @@ export function InvestInTunisia({ lang }: { lang?: string }) {
                     {feature.description}
                   </p>
                   
-                  <div className="mt-auto flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold cursor-pointer opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                    {isFr ? "Découvrir l'accompagnement" : 'Explore support'} <ArrowRight className="w-5 h-5" />
+                  <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold">
+                    {isFr ? "Découvrir l'accompagnement" : 'Explore support'} <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>

@@ -78,7 +78,7 @@ export function BlogSection({ lang }: { lang?: string }) {
             className="hidden sm:block"
           >
             <Link
-              href={`/${lang}/blog`}
+              href={`/${lang}/blogs`}
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-500 font-semibold transition-colors"
             >
               {isFr ? 'Voir tous les articles' : 'View all articles'}
@@ -125,7 +125,7 @@ export function BlogSection({ lang }: { lang?: string }) {
           className="mt-8 text-center sm:hidden"
         >
           <Link
-            href={`/${lang}/blog`}
+            href={`/${lang}/blogs`}
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-500 font-semibold transition-colors"
           >
             {isFr ? 'Voir tous les articles' : 'View all articles'}

@@ -4,6 +4,23 @@ import type { Metadata } from 'next'
 import { Calendar, User, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
+function renderContent(text: string) {
+  return text.split('\n\n').map((block, i) => {
+    if (block.startsWith('## ')) {
+      return <h2 key={i} className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-4">{block.replace('## ', '')}</h2>
+    }
+    const lines = block.split('\n')
+    if (lines.every(l => l.startsWith('- '))) {
+      return (
+        <ul key={i} className="list-disc pl-6 text-lg text-slate-600 dark:text-slate-400 mb-6 space-y-2">
+          {lines.map((line, j) => <li key={j}>{line.replace('- ', '')}</li>)}
+        </ul>
+      )
+    }
+    return <p key={i} className="text-lg leading-relaxed text-slate-600 dark:text-slate-400 mb-6">{block}</p>
+  })
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: string; slug: string }> }): Promise<Metadata> {
   const { lang, slug } = await params
   const post = blogs.find((b) => b.slug === slug)
@@ -72,10 +89,8 @@ export default async function BlogDetailPage({
             </h1>
           </header>
 
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p className="text-xl leading-relaxed text-slate-600 dark:text-zinc-400">
-              {content}
-            </p>
+          <div className="prose prose-lg dark:prose-invert max-w-none [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-slate-900 dark:[&_h2]:text-white [&_h2]:mt-12 [&_h2]:mb-4 [&_p]:text-lg [&_p]:leading-relaxed [&_p]:text-slate-600 dark:[&_p]:text-slate-400 [&_p]:mb-6 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:text-lg [&_ul]:text-slate-600 dark:[&_ul]:text-slate-400 [&_ul]:mb-6 [&_ul]:space-y-2">
+            {renderContent(content)}
           </div>
         </article>
       </div>
