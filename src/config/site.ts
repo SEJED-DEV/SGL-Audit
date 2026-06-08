@@ -19,8 +19,10 @@
     whatsappLink: "https://wa.me/21698297521"
   },
   location: {
-    address: "Bab Khadhra 1006 Tunis",
-    googleMapsLink: "https://maps.google.com/?q=Bab+Khadhra+Tunis",
+    address: "Rue Bab El Khadra, Tunis 1006",
+    addressFull: "SGL Audit, R54F+R86, Rue Bab El Khadra, Tunis",
+    googleMapsLink: "https://maps.google.com/?q=SGL+Audit+Rue+Bab+El+Khadra+Tunis",
+    googleMapsEmbed: "https://www.google.com/maps?q=SGL+Audit+Rue+Bab+El+Khadra+Tunis&output=embed",
   },
   social: {
     linkedin: "https://tn.linkedin.com/in/ridha-trabelsi-a34229173",

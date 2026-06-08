@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "@/config/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,7 +52,7 @@ const websiteJsonLd = {
       description: "Société d'expertise comptable inscrite au tableau de l'Ordre des Experts Comptables de Tunisie.",
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Bab Khadhra',
+        streetAddress: siteConfig.location.addressFull,
         addressLocality: 'Tunis',
         addressCountry: 'TN',
         postalCode: '1006',

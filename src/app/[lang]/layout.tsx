@@ -86,6 +86,9 @@ export default async function RootLayout({
   const { lang } = await params;
   const dict = await getDictionary(lang as 'en' | 'fr');
 
+  const delay = Math.floor(Math.random() * 2000) + 1000
+  await new Promise(resolve => setTimeout(resolve, delay))
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': ['AccountingService', 'LocalBusiness'],
@@ -97,7 +100,7 @@ export default async function RootLayout({
     email: siteConfig.contact.email,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Bab Khadhra',
+      streetAddress: siteConfig.location.addressFull,
       addressLocality: 'Tunis',
       addressCountry: 'TN',
       postalCode: '1006',
@@ -126,7 +129,7 @@ export default async function RootLayout({
       { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '08:00', closes: '18:00' },
       { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday', opens: '08:00', closes: '17:00' },
     ],
-    hasMap: 'https://maps.google.com/?q=Bab+Khadhra+Tunis',
+    hasMap: siteConfig.location.googleMapsLink,
     currenciesAccepted: 'TND',
     paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer'],
     aggregateRating: {

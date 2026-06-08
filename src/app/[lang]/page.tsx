@@ -164,7 +164,7 @@ export default async function Home({
                   <div>
                     <h4 className="font-bold mb-0.5 uppercase text-xs tracking-widest text-slate-500">{lang === 'fr' ? 'Adresse' : 'Address'}</h4>
                     <a href={siteConfig.location.googleMapsLink} target="_blank" rel="noreferrer" className="text-lg font-semibold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-tight">
-                      {siteConfig.location.address}
+                      {siteConfig.location.addressFull}
                     </a>
                   </div>
                 </div>

@@ -118,7 +118,7 @@ export default async function ContactPage({
                       {isFr ? 'Adresse' : 'Address'}
                     </h4>
                     <a href={siteConfig.location.googleMapsLink} target="_blank" rel="noreferrer" className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-tight">
-                      {siteConfig.location.address}
+                      {siteConfig.location.addressFull}
                     </a>
                   </div>
                 </div>
@@ -126,16 +126,16 @@ export default async function ContactPage({
             </div>
 
             <div className="space-y-8">
-              <div className="rounded-3xl overflow-hidden border border-slate-200 dark:border-zinc-800 shadow-xl h-64">
+              <div className="rounded-3xl overflow-hidden border border-slate-200 dark:border-zinc-800 shadow-xl h-72 md:h-96">
                 <iframe
-                  src="https://www.google.com/maps?q=Bab+Khadhra+Tunis&output=embed"
+                  src={siteConfig.location.googleMapsEmbed}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="SGL Audit - Bab Khadhra, Tunis"
+                  title={`SGL Audit - ${siteConfig.location.address}`}
                 />
               </div>
               <div className="bg-slate-50 dark:bg-zinc-950 p-8 sm:p-12 rounded-3xl border border-slate-200 dark:border-zinc-800 shadow-xl">
