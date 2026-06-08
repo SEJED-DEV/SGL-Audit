@@ -63,8 +63,8 @@ export default async function BlogPage({
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 flex-1 line-clamp-3">
                     {lang === 'fr' ? post.excerpt.fr : post.excerpt.en}
                   </p>
-                  <Link href={`/${lang}/blog/${post.slug}`} className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group mt-auto">
-                    Lire la suite
+                  <Link href={`/${lang}/blogs/${post.slug}`} className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group mt-auto">
+                    {lang === 'fr' ? 'Lire la suite' : 'Read more'}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>

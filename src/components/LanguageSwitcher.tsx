@@ -14,19 +14,23 @@ export function LanguageSwitcher() {
   }
 
   return (
-    <div className="flex gap-2 text-sm font-medium">
+    <div className="flex gap-1 text-sm font-semibold">
       <Link
         href={switchLang('fr')}
-        className={`px-2 py-1 rounded ${
-          currentLang === 'fr' ? 'bg-primary text-primary-foreground' : 'hover:bg-accent/20'
+        className={`px-2.5 py-1.5 rounded-lg transition-all ${
+          currentLang === 'fr'
+            ? 'bg-blue-600 text-white shadow-sm'
+            : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-zinc-800'
         }`}
       >
         FR
       </Link>
       <Link
         href={switchLang('en')}
-        className={`px-2 py-1 rounded ${
-          currentLang === 'en' ? 'bg-primary text-primary-foreground' : 'hover:bg-accent/20'
+        className={`px-2.5 py-1.5 rounded-lg transition-all ${
+          currentLang === 'en'
+            ? 'bg-blue-600 text-white shadow-sm'
+            : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-zinc-800'
         }`}
       >
         EN

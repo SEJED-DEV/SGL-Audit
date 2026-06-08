@@ -106,6 +106,27 @@ export default async function MentionsLegalesPage({
         </p>
       ),
     },
+    {
+      number: '5',
+      title: isFr ? 'Conception & Développement' : 'Design & Development',
+      content: isFr ? (
+        <p>
+          Ce site a été conçu et développé par :<br />
+          <strong>{siteConfig.developer.name}</strong><br />
+          Site web : <a href={siteConfig.developer.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{siteConfig.developer.website}</a><br />
+          Email : {siteConfig.developer.email}<br />
+          Téléphone : {siteConfig.developer.phone}
+        </p>
+      ) : (
+        <p>
+          This website was designed and developed by:<br />
+          <strong>{siteConfig.developer.name}</strong><br />
+          Website: <a href={siteConfig.developer.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{siteConfig.developer.website}</a><br />
+          Email: {siteConfig.developer.email}<br />
+          Phone: {siteConfig.developer.phone}
+        </p>
+      ),
+    },
   ]
 
   return (

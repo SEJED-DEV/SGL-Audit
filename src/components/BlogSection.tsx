@@ -10,19 +10,19 @@ const articlesData = {
       title: "Créer son entreprise en Tunisie : Guide complet 2026",
       excerpt: "Toutes les étapes pour créer votre entreprise en Tunisie : choix du statut, formalités, fiscalité et délais à respecter.",
       date: "15 Mai 2026",
-      slug: "/blog/creer-entreprise-tunisie-guide"
+      slug: "/blogs/creer-entreprise-tunisie-guide"
     },
     {
       title: "Optimisation fiscale pour les freelances en Tunisie",
       excerpt: "Découvrez les dispositifs fiscaux avantageux pour les travailleurs indépendants et freelances en Tunisie.",
       date: "2 Avril 2026",
-      slug: "/blog/optimisation-fiscale-freelance-tunisie"
+      slug: "/blogs/optimisation-fiscale-freelance-tunisie"
     },
     {
       title: "Investir en Tunisie : opportunités pour les non-résidents",
       excerpt: "Pourquoi la Tunisie attire de plus en plus d'investisseurs étrangers et comment s'y implanter facilement.",
       date: "18 Mars 2026",
-      slug: "/blog/investir-tunisie-non-residents"
+      slug: "/blogs/investir-tunisie-non-residents"
     }
   ],
   en: [
@@ -30,19 +30,19 @@ const articlesData = {
       title: "Creating your company in Tunisia: Complete Guide 2026",
       excerpt: "All the steps to create your company in Tunisia: choice of legal status, formalities, taxation and deadlines.",
       date: "May 15, 2026",
-      slug: "/blog/creer-entreprise-tunisie-guide"
+      slug: "/blogs/creer-entreprise-tunisie-guide"
     },
     {
       title: "Tax optimization for freelancers in Tunisia",
       excerpt: "Discover advantageous tax provisions for self-employed workers and freelancers in Tunisia.",
       date: "April 2, 2026",
-      slug: "/blog/optimisation-fiscale-freelance-tunisie"
+      slug: "/blogs/optimisation-fiscale-freelance-tunisie"
     },
     {
       title: "Investing in Tunisia: opportunities for non-residents",
       excerpt: "Why Tunisia is attracting more and more foreign investors and how to establish yourself easily.",
       date: "March 18, 2026",
-      slug: "/blog/investir-tunisie-non-residents"
+      slug: "/blogs/investir-tunisie-non-residents"
     }
   ]
 }

@@ -19,8 +19,14 @@
     facebook: "https://www.facebook.com/",
     instagram: "https://www.instagram.com/",
   },
+  developer: {
+    name: "Sejed TRABELSSI",
+    phone: "+216 94 155 000",
+    email: "support@sejed.dev",
+    website: "https://sejed.dev"
+  },
   credits: {
-    madeBy: "sejed.dev",
+    madeBy: "Sejed TRABELSSI",
     link: "https://sejed.dev"
   },
   navigation: [
