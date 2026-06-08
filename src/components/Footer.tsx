@@ -72,7 +72,7 @@ export function Footer({ lang, dict }: FooterProps) {
           </div>
 
           <div className="md:col-span-4 lg:col-span-2">
-            <h3 className="text-white font-semibold mb-5 tracking-wide uppercase text-xs">Navigation</h3>
+            <h3 className="text-white font-semibold mb-5 tracking-wide uppercase text-xs">{lang === 'fr' ? 'Navigation' : 'Navigation'}</h3>
             <ul className="space-y-3">
               {siteConfig.navigation.map((item, idx) => (
                 <li key={idx}>
@@ -89,44 +89,44 @@ export function Footer({ lang, dict }: FooterProps) {
           </div>
 
           <div className="md:col-span-4 lg:col-span-3">
-            <h3 className="text-white font-semibold mb-5 tracking-wide uppercase text-xs">Nos Expertises</h3>
+            <h3 className="text-white font-semibold mb-5 tracking-wide uppercase text-xs">{lang === 'fr' ? 'Nos Expertises' : 'Our Expertise'}</h3>
             <ul className="space-y-3">
               <li>
                 <Link href={`/${lang}/nos-expertises/expertise-comptable`} className="text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center group text-sm">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-                  Expertise Comptable
+                  {lang === 'fr' ? 'Expertise Comptable' : 'Accounting'}
                 </Link>
               </li>
               <li>
                 <Link href={`/${lang}/nos-expertises/paie-social`} className="text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center group text-sm">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-                  Paie & Social
+                  {lang === 'fr' ? 'Paie & Social' : 'Payroll & Social'}
                 </Link>
               </li>
               <li>
                 <Link href={`/${lang}/nos-expertises/juridique-fiscal`} className="text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center group text-sm">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-                  Juridique & Fiscal
+                  {lang === 'fr' ? 'Juridique & Fiscal' : 'Legal & Tax'}
                 </Link>
               </li>
               <li>
                 <Link href={`/${lang}/investir-en-tunisie`} className="text-slate-400 hover:text-blue-400 transition-colors inline-flex items-center group text-sm">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-                  Création d'entreprise
+                  {lang === 'fr' ? "Création d'entreprise" : 'Business Creation'}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div className="md:col-span-4 lg:col-span-3">
-            <h3 className="text-white font-semibold mb-5 tracking-wide uppercase text-xs">Contact</h3>
+            <h3 className="text-white font-semibold mb-5 tracking-wide uppercase text-xs">{lang === 'fr' ? 'Contact' : 'Contact'}</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-lg bg-slate-800/80 border border-slate-700/50 flex items-center justify-center flex-shrink-0 text-blue-400 mt-0.5">
                   <Mail className="w-3.5 h-3.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-500 uppercase tracking-wider mb-0.5">Email</span>
+                  <span className="text-[10px] text-slate-500 uppercase tracking-wider mb-0.5">{lang === 'fr' ? 'Email' : 'Email'}</span>
                   <a href={`mailto:${siteConfig.contact.email}`} className="text-slate-300 hover:text-blue-400 transition-colors text-sm">
                     {siteConfig.contact.email}
                   </a>
@@ -137,7 +137,7 @@ export function Footer({ lang, dict }: FooterProps) {
                   <Globe className="w-3.5 h-3.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-500 uppercase tracking-wider mb-0.5">Site web</span>
+                  <span className="text-[10px] text-slate-500 uppercase tracking-wider mb-0.5">{lang === 'fr' ? 'Site web' : 'Website'}</span>
                   <a href={siteConfig.website} target="_blank" rel="noreferrer" className="text-slate-300 hover:text-blue-400 transition-colors text-sm">
                     {websiteDisplay}
                   </a>
@@ -148,7 +148,7 @@ export function Footer({ lang, dict }: FooterProps) {
                   <Phone className="w-3.5 h-3.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-500 uppercase tracking-wider mb-0.5">Téléphone</span>
+                  <span className="text-[10px] text-slate-500 uppercase tracking-wider mb-0.5">{lang === 'fr' ? 'Téléphone' : 'Phone'}</span>
                   <a href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`} className="text-slate-300 hover:text-blue-400 transition-colors text-sm">
                     {siteConfig.contact.phone}
                   </a>
@@ -162,7 +162,7 @@ export function Footer({ lang, dict }: FooterProps) {
                   <MapPin className="w-3.5 h-3.5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] text-slate-500 uppercase tracking-wider mb-0.5">Adresse</span>
+                  <span className="text-[10px] text-slate-500 uppercase tracking-wider mb-0.5">{lang === 'fr' ? 'Adresse' : 'Address'}</span>
                   <a href={siteConfig.location.googleMapsLink} target="_blank" rel="noreferrer" className="text-slate-300 hover:text-blue-400 transition-colors text-sm leading-relaxed">
                     {siteConfig.location.address}
                   </a>
