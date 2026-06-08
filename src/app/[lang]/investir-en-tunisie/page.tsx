@@ -19,44 +19,84 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   }
 }
 
-const features = [
-  {
-    icon: Building2,
-    title: "Création d'entreprise à Tunis",
-    href: "/nos-expertises/expertise-comptable",
-    description: "Choisissez le type d'entreprise adapté à votre projet. Nous guidons chaque étape, de la formalisation juridique à l'immatriculation.",
-    points: [
-      "SARL, SARL Unipersonnelle, SA, SNC",
-      "Entreprise individuelle (EI)",
-      "Immatriculation rapide et sécurisée",
-      "Accompagnement business plan",
-    ]
-  },
-  {
-    icon: Globe,
-    title: "Acquérir une entreprise existante",
-    href: "/nos-expertises/juridique-fiscal",
-    description: "Explorez les options pour acheter une société étagère (Shelf Company), reprendre une entreprise déjà établie ou acquérir un fonds de commerce.",
-    points: [
-      "Société étagère (Shelf Company)",
-      "Reprise d'entreprise déjà établie",
-      "Acquisition d'un fonds de commerce",
-      "Due diligence et audit d'acquisition",
-    ]
-  },
-  {
-    icon: UserPlus,
-    title: "Services pour non-résidents",
-    href: "/formalites",
-    description: "Si vous êtes étranger, nous proposons des services spécifiques adaptés à votre situation.",
-    points: [
-      "Création d'entreprise en Tunisie",
-      "Domiciliation à Tunis",
-      "Représentation fiscale",
-      "Accompagnement résidence et séjour",
-    ]
-  }
-]
+const featuresData = {
+  fr: [
+    {
+      icon: Building2,
+      title: "Création d'entreprise à Tunis",
+      href: "/nos-expertises/expertise-comptable",
+      description: "Choisissez le type d'entreprise adapté à votre projet. Nous guidons chaque étape, de la formalisation juridique à l'immatriculation.",
+      points: [
+        "SARL, SARL Unipersonnelle, SA, SNC",
+        "Entreprise individuelle (EI)",
+        "Immatriculation rapide et sécurisée",
+        "Accompagnement business plan",
+      ]
+    },
+    {
+      icon: Globe,
+      title: "Acquérir une entreprise existante",
+      href: "/nos-expertises/juridique-fiscal",
+      description: "Explorez les options pour acheter une société étagère (Shelf Company), reprendre une entreprise déjà établie ou acquérir un fonds de commerce.",
+      points: [
+        "Société étagère (Shelf Company)",
+        "Reprise d'entreprise déjà établie",
+        "Acquisition d'un fonds de commerce",
+        "Due diligence et audit d'acquisition",
+      ]
+    },
+    {
+      icon: UserPlus,
+      title: "Services pour non-résidents",
+      href: "/formalites",
+      description: "Si vous êtes étranger, nous proposons des services spécifiques adaptés à votre situation.",
+      points: [
+        "Création d'entreprise en Tunisie",
+        "Domiciliation à Tunis",
+        "Représentation fiscale",
+        "Accompagnement résidence et séjour",
+      ]
+    }
+  ],
+  en: [
+    {
+      icon: Building2,
+      title: "Business Creation in Tunis",
+      href: "/nos-expertises/expertise-comptable",
+      description: "Choose the business type that suits your project. We guide every step from legal formalization to registration.",
+      points: [
+        "SARL, Sole Proprietorship SARL, SA, SNC",
+        "Sole proprietorship (EI)",
+        "Fast and secure registration",
+        "Business plan support",
+      ]
+    },
+    {
+      icon: Globe,
+      title: "Acquire an Existing Business",
+      href: "/nos-expertises/juridique-fiscal",
+      description: "Explore options to buy a shelf company, take over an established business, or acquire a business asset.",
+      points: [
+        "Shelf Company",
+        "Takeover of an established business",
+        "Acquisition of business assets",
+        "Due diligence and acquisition audit",
+      ]
+    },
+    {
+      icon: UserPlus,
+      title: "Services for Non-Residents",
+      href: "/formalites",
+      description: "If you are a foreigner, we offer specific services tailored to your situation.",
+      points: [
+        "Business creation in Tunisia",
+        "Domiciliation in Tunis",
+        "Tax representation",
+        "Residence and stay support",
+      ]
+    }
+  ]
+}
 
 export default async function InvestirEnTunisiePage({
   params,
@@ -64,6 +104,8 @@ export default async function InvestirEnTunisiePage({
   params: Promise<{ lang: string }>
 }) {
   const { lang } = await params
+  const isFr = lang === 'fr'
+  const features = featuresData[isFr ? 'fr' : 'en']
 
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-zinc-950">
@@ -73,13 +115,13 @@ export default async function InvestirEnTunisiePage({
         <div className="relative w-full container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600/20 border border-blue-400/30 text-blue-300 text-sm font-medium mb-8">
             <Globe className="w-4 h-4" />
-            Investissement & Implantation
+            {isFr ? 'Investissement & Implantation' : 'Investment & Relocation'}
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Investir en Tunisie
+            {isFr ? 'Investir en Tunisie' : 'Invest in Tunisia'}
           </h1>
           <p className="text-xl text-slate-300 mb-10 leading-relaxed">
-            Cette section est dédiée aux investisseurs souhaitant s'implanter ou investir en Tunisie. Vous y trouverez toutes les options pour créer ou reprendre une entreprise à Tunis, ainsi que les services spécialisés pour les non-résidents.
+            {isFr ? "Cette section est dédiée aux investisseurs souhaitant s'implanter ou investir en Tunisie. Vous y trouverez toutes les options pour créer ou reprendre une entreprise à Tunis, ainsi que les services spécialisés pour les non-résidents." : "This section is dedicated to investors looking to establish or invest in Tunisia. You will find all the options to create or take over a business in Tunis, as well as specialized services for non-residents."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -89,13 +131,13 @@ export default async function InvestirEnTunisiePage({
               className="inline-flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-500 rounded-full font-semibold transition-all hover:-translate-y-0.5 shadow-lg"
             >
               <MessageCircle className="w-5 h-5" />
-              Discuter par WhatsApp
+              {isFr ? 'Discuter par WhatsApp' : 'Chat on WhatsApp'}
             </a>
             <Link
               href={`/${lang}/contact`}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full font-semibold transition-all hover:-translate-y-0.5"
             >
-              Contactez-nous
+              {isFr ? 'Contactez-nous' : 'Contact Us'}
             </Link>
           </div>
         </div>
@@ -127,7 +169,7 @@ export default async function InvestirEnTunisiePage({
                     href={`/${lang}${feature.href}`}
                     className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-sm group"
                   >
-                    En savoir plus
+                    {isFr ? 'En savoir plus' : 'Learn more'}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -140,8 +182,8 @@ export default async function InvestirEnTunisiePage({
       {/* CTA */}
       <section className="py-16 bg-blue-600">
         <div className="container mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">Prêt à démarrer votre activité en Tunisie ?</h2>
-          <p className="text-blue-100 mb-8 text-lg">Contactez-nous pour un accompagnement personnalisé.</p>
+          <h2 className="text-3xl font-bold mb-4">{isFr ? 'Prêt à démarrer votre activité en Tunisie ?' : 'Ready to start your business in Tunisia?'}</h2>
+          <p className="text-blue-100 mb-8 text-lg">{isFr ? 'Contactez-nous pour un accompagnement personnalisé.' : 'Contact us for personalized support.'}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={siteConfig.contact.whatsappLink}
@@ -150,13 +192,13 @@ export default async function InvestirEnTunisiePage({
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-full font-bold hover:bg-slate-50 transition-colors shadow-md"
             >
               <MessageCircle className="w-5 h-5" />
-              Discuter par WhatsApp
+              {isFr ? 'Discuter par WhatsApp' : 'Chat on WhatsApp'}
             </a>
             <a
               href={`mailto:${siteConfig.contact.email}`}
               className="inline-flex items-center gap-2 px-8 py-4 bg-blue-700 text-white rounded-full font-bold hover:bg-blue-800 transition-colors"
             >
-              Contactez-nous par Email
+              {isFr ? 'Contactez-nous par Email' : 'Contact us by Email'}
             </a>
           </div>
         </div>

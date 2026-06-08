@@ -19,57 +19,110 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   }
 }
 
-const expertises = [
-  {
-    icon: Calculator,
-    title: "Expertise Comptable & Conseil en Gestion",
-    slug: "expertise-comptable",
-    color: "blue",
-    description: "La clarté financière pour piloter votre activité en toute sérénité.",
-    services: [
-      "Tenue de comptabilité",
-      "Révision comptable",
-      "Établissement des comptes annuels",
-      "Déclarations fiscales",
-      "Tableaux de bord et reporting",
-      "Prévisionnel financier",
-      "Accompagnement à la création d'entreprise",
-      "Conseil en gestion",
-    ]
-  },
-  {
-    icon: Users,
-    title: "Pôle Social & Gestion de la Paie",
-    slug: "paie-social",
-    color: "indigo",
-    description: "La sécurité juridique et la valorisation de votre capital humain.",
-    services: [
-      "Gestion de la paie",
-      "Déclarations sociales",
-      "Gestion administrative du personnel",
-      "Rédaction des contrats de travail",
-      "Conseil en droit social",
-      "Gestion des entrées et sorties de salariés",
-      "Audit social",
-    ]
-  },
-  {
-    icon: Scale,
-    title: "Expertise Juridique & Fiscale",
-    slug: "juridique-fiscal",
-    color: "purple",
-    description: "Optimiser votre fiscalité et sécuriser la structure de votre société.",
-    services: [
-      "Secrétariat juridique",
-      "Création de société",
-      "Modification de société",
-      "Dissolution et liquidation",
-      "Conseil fiscal",
-      "Déclarations fiscales",
-      "Audit fiscal",
-    ]
-  }
-]
+const expertisesData = {
+  fr: [
+    {
+      icon: Calculator,
+      title: "Expertise Comptable & Conseil en Gestion",
+      slug: "expertise-comptable",
+      color: "blue",
+      description: "La clarté financière pour piloter votre activité en toute sérénité.",
+      services: [
+        "Tenue de comptabilité",
+        "Révision comptable",
+        "Établissement des comptes annuels",
+        "Déclarations fiscales",
+        "Tableaux de bord et reporting",
+        "Prévisionnel financier",
+        "Accompagnement à la création d'entreprise",
+        "Conseil en gestion",
+      ]
+    },
+    {
+      icon: Users,
+      title: "Pôle Social & Gestion de la Paie",
+      slug: "paie-social",
+      color: "indigo",
+      description: "La sécurité juridique et la valorisation de votre capital humain.",
+      services: [
+        "Gestion de la paie",
+        "Déclarations sociales",
+        "Gestion administrative du personnel",
+        "Rédaction des contrats de travail",
+        "Conseil en droit social",
+        "Gestion des entrées et sorties de salariés",
+        "Audit social",
+      ]
+    },
+    {
+      icon: Scale,
+      title: "Expertise Juridique & Fiscale",
+      slug: "juridique-fiscal",
+      color: "purple",
+      description: "Optimiser votre fiscalité et sécuriser la structure de votre société.",
+      services: [
+        "Secrétariat juridique",
+        "Création de société",
+        "Modification de société",
+        "Dissolution et liquidation",
+        "Conseil fiscal",
+        "Déclarations fiscales",
+        "Audit fiscal",
+      ]
+    }
+  ],
+  en: [
+    {
+      icon: Calculator,
+      title: "Accounting & Management Consulting",
+      slug: "expertise-comptable",
+      color: "blue",
+      description: "Financial clarity to steer your business with complete peace of mind.",
+      services: [
+        "Bookkeeping",
+        "Accounting review",
+        "Preparation of annual accounts",
+        "Tax declarations",
+        "Dashboards and reporting",
+        "Financial forecasting",
+        "Business creation support",
+        "Management consulting",
+      ]
+    },
+    {
+      icon: Users,
+      title: "Payroll & Social Management",
+      slug: "paie-social",
+      color: "indigo",
+      description: "Legal security and enhancement of your human capital.",
+      services: [
+        "Payroll management",
+        "Social declarations",
+        "HR administrative management",
+        "Employment contract drafting",
+        "Social law consulting",
+        "Employee entry and exit management",
+        "Social audit",
+      ]
+    },
+    {
+      icon: Scale,
+      title: "Legal & Tax Expertise",
+      slug: "juridique-fiscal",
+      color: "purple",
+      description: "Optimize your taxation and secure your company structure.",
+      services: [
+        "Corporate secretarial",
+        "Company formation",
+        "Company modification",
+        "Dissolution and liquidation",
+        "Tax consulting",
+        "Tax declarations",
+        "Tax audit",
+      ]
+    }
+  ]
+}
 
 const colorMap: Record<string, string> = {
   blue: "bg-blue-50 dark:bg-blue-900/20 text-blue-600",
@@ -89,6 +142,7 @@ export default async function NosExpertisesPage({
   params: Promise<{ lang: string }>
 }) {
   const { lang } = await params
+  const isFr = lang === 'fr'
 
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-zinc-950">
@@ -97,14 +151,14 @@ export default async function NosExpertisesPage({
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554200876-56c2f25224fa?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
         <div className="relative w-full container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Nos Expertises : Un Accompagnement à 360° pour votre Entreprise
+            {isFr ? 'Nos Expertises : Un Accompagnement à 360° pour votre Entreprise' : 'Our Expertise: 360° Support for Your Business'}
           </h1>
           <div className="h-1 w-24 bg-blue-400 rounded mx-auto mb-8" />
           <p className="text-xl text-slate-300 mb-4 font-medium">
-            Simplifiez votre gestion, sécurisez votre croissance et concentrez-vous sur l'essentiel : votre métier.
+            {isFr ? "Simplifiez votre gestion, sécurisez votre croissance et concentrez-vous sur l'essentiel : votre métier." : "Simplify your management, secure your growth, and focus on what matters: your business."}
           </p>
           <p className="text-lg text-slate-400 leading-relaxed">
-            En tant que partenaire de confiance, notre cabinet d'expertise comptable accompagne les entrepreneurs et dirigeants dans toutes les étapes de la vie de leur entreprise. Nous combinons rigueur technique et conseil stratégique pour transformer vos obligations réglementaires en véritables leviers de performance.
+            {isFr ? "En tant que partenaire de confiance, notre cabinet d'expertise comptable accompagne les entrepreneurs et dirigeants dans toutes les étapes de la vie de leur entreprise. Nous combinons rigueur technique et conseil stratégique pour transformer vos obligations réglementaires en véritables leviers de performance." : "As a trusted partner, our accounting firm supports entrepreneurs and managers at every stage of their business life. We combine technical rigor and strategic advice to turn your regulatory obligations into real performance drivers."}
           </p>
         </div>
       </section>
@@ -113,7 +167,7 @@ export default async function NosExpertisesPage({
       <section className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {expertises.map((exp) => (
+            {expertisesData[isFr ? 'fr' : 'en'].map((exp) => (
               <div
                 key={exp.slug}
                 className={`bg-white dark:bg-zinc-900 rounded-2xl shadow-sm border-2 ${borderMap[exp.color]} overflow-hidden flex flex-col hover:shadow-lg transition-shadow`}
@@ -138,7 +192,7 @@ export default async function NosExpertisesPage({
                     href={`/${lang}/nos-expertises/${exp.slug}`}
                     className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-semibold hover:opacity-90 transition-opacity group"
                   >
-                    En savoir plus
+                    {isFr ? 'En savoir plus' : 'Learn more'}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -151,8 +205,8 @@ export default async function NosExpertisesPage({
       {/* Why us section */}
       <section className="py-16 bg-white dark:bg-zinc-900 border-t border-slate-100 dark:border-zinc-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Pourquoi choisir {siteConfig.name} ?</h2>
-          <p className="text-slate-500 dark:text-slate-400 mb-12 max-w-2xl mx-auto">Un interlocuteur dédié, des outils modernes et une réactivité à toute épreuve.</p>
+          <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">{isFr ? `Pourquoi choisir ${siteConfig.name} ?` : `Why choose ${siteConfig.name}?`}</h2>
+          <p className="text-slate-500 dark:text-slate-400 mb-12 max-w-2xl mx-auto">{isFr ? 'Un interlocuteur dédié, des outils modernes et une réactivité à toute épreuve.' : 'A dedicated contact, modern tools, and unwavering responsiveness.'}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={siteConfig.contact.whatsappLink}
@@ -161,13 +215,13 @@ export default async function NosExpertisesPage({
               className="inline-flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-500 text-white rounded-full font-semibold transition-colors shadow-md"
             >
               <MessageCircle className="w-5 h-5" />
-              Discuter par WhatsApp
+              {isFr ? 'Discuter par WhatsApp' : 'Chat on WhatsApp'}
             </a>
             <Link
               href={`/${lang}/contact`}
               className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold transition-colors shadow-md"
             >
-              Contactez-nous
+              {isFr ? 'Contactez-nous' : 'Contact Us'}
             </Link>
           </div>
         </div>
