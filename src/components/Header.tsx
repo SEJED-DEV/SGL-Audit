@@ -25,7 +25,8 @@ export function Header({ lang, dict }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
 
-  const needsSolidBg = pathname.match(/^\/(en|fr)\/blogs($|\/)/) !== null
+  const isHomePage = pathname === `/${lang}` || pathname === `/${lang}/`
+  const needsSolidBg = !isHomePage
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0
