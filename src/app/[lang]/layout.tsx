@@ -4,6 +4,7 @@ import "../globals.css";
 import { Providers } from "@/components/Providers";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ContextMenu } from "@/components/ContextMenu";
 import { getDictionary } from "@/lib/get-dictionary";
 import { siteConfig } from "@/config/site";
 
@@ -34,12 +35,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       template: `%s | SGL Audit`,
     },
     description,
-    metadataBase: new URL('https://sglaudit.tn'),
+    metadataBase: new URL('https://sglaudit.com'),
     alternates: {
-      canonical: `https://sglaudit.tn/${lang}`,
+      canonical: `https://sglaudit.com/${lang}`,
       languages: {
-        'fr': 'https://sglaudit.tn/fr',
-        'en': 'https://sglaudit.tn/en',
+        'fr': 'https://sglaudit.com/fr',
+        'en': 'https://sglaudit.com/en',
       },
     },
 
@@ -58,14 +59,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       siteName: siteConfig.name,
       title,
       description,
-      url: `https://sglaudit.tn/${lang}`,
-      images: [{ url: 'https://sglaudit.tn/logo.png', width: 160, height: 53 }],
+      url: `https://sglaudit.com/${lang}`,
+      images: [{ url: 'https://sglaudit.com/logo.png', width: 160, height: 53 }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://sglaudit.tn/logo.png'],
+      images: ['https://sglaudit.com/logo.png'],
     },
   }
 }
@@ -85,7 +86,7 @@ export default async function RootLayout({
     '@type': 'AccountingService',
     name: siteConfig.name,
     description: siteConfig.description,
-    url: `https://sglaudit.tn/${lang}`,
+    url: `https://sglaudit.com/${lang}`,
     telephone: [siteConfig.contact.phone, siteConfig.contact.phone2],
     email: siteConfig.contact.email,
     address: {
@@ -103,7 +104,7 @@ export default async function RootLayout({
     sameAs: [
       siteConfig.social.linkedin,
     ],
-    image: 'https://sglaudit.tn/logo.png',
+    image: 'https://sglaudit.com/logo.png',
   }
 
   return (
@@ -120,6 +121,7 @@ export default async function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
         <Providers>
+          <ContextMenu lang={lang} />
           <Header lang={lang} dict={dict} />
           <div className="flex-1">
             {children}

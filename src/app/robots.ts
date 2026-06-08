@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/'],
       },
     ],
-    sitemap: 'https://sglaudit.tn/sitemap.xml',
+    sitemap: 'https://sglaudit.com/sitemap.xml',
   }
 }

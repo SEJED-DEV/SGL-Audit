@@ -2,7 +2,7 @@
   name: "SGL Audit",
   description: "Société d'expertise comptable inscrite au tableau de l'Ordre des Experts Comptables de Tunisie.",
   tagline: "Expert-comptable à Tunis: création d'entreprise, gestion comptable, conseils juridiques et fiscaux.",
-  website: "https://sglaudit.tn",
+  website: "https://sglaudit.com",
   contact: {
     email: "direction@sglaudit.com",
     phone: "+216 98 297 521",

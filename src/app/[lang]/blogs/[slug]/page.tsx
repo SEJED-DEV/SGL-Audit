@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title,
     description,
     alternates: {
-      canonical: `https://sglaudit.tn/${lang}/blogs/${slug}`,
+      canonical: `https://sglaudit.com/${lang}/blogs/${slug}`,
     },
     openGraph: {
       title,

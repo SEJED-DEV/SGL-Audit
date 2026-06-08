@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title,
     description,
     alternates: {
-      canonical: `https://sglaudit.tn/${lang}/contact`,
+      canonical: `https://sglaudit.com/${lang}/contact`,
     },
     openGraph: { title, description },
   }
@@ -25,32 +25,34 @@ export default async function ContactPage({
   params: Promise<{ lang: string }>
 }) {
   const { lang } = await params
+  const isFr = lang === 'fr'
 
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-zinc-950">
-      {/* Hero */}
-      <section className="min-h-[100dvh] flex items-center pt-24 pb-20 bg-gradient-to-br from-slate-900 to-blue-950 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
+      <section className="min-h-[60vh] flex items-center pt-32 pb-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-5" />
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none" />
         <div className="relative w-full container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Contactez-nous
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            {isFr ? 'Contactez-nous' : 'Contact Us'}
           </h1>
-          <div className="h-1 w-24 bg-blue-400 rounded mx-auto mb-8" />
-          <p className="text-xl text-slate-300 leading-relaxed">
-            Une question ? Un projet ? N'hésitez pas à nous contacter via le formulaire ou directement par email ou téléphone.
+          <div className="h-1 w-24 bg-blue-400 rounded-full mx-auto mb-8" />
+          <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
+            {isFr
+              ? "Une question ? Un projet ? N'hésitez pas à nous contacter via le formulaire ou directement par email ou téléphone."
+              : 'A question? A project? Feel free to contact us via the form or directly by email or phone.'}
           </p>
         </div>
       </section>
 
-      {/* Contact Section */}
       <section className="py-24 bg-white dark:bg-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
             <div>
               <h2 className="text-3xl font-bold mb-8 text-slate-900 dark:text-white">
-                Nos coordonnées
+                {isFr ? 'Nos coordonnées' : 'Our Details'}
               </h2>
-              
+
               <div className="space-y-8">
                 <div className="flex items-start gap-4">
                   <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-blue-600">
@@ -63,24 +65,27 @@ export default async function ContactPage({
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-blue-600">
                     <Globe className="h-6 w-6" />
                   </div>
                   <div className="pt-1">
-                    <h4 className="font-bold mb-1 uppercase text-xs tracking-widest text-slate-500">Site web</h4>
+                    <h4 className="font-bold mb-1 uppercase text-xs tracking-widest text-slate-500">{isFr ? 'Site web' : 'Website'}</h4>
                     <a href={siteConfig.website} target="_blank" rel="noreferrer" className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                      sglaudit.tn
+                      sglaudit.com
                     </a>
                   </div>
                 </div>
+
                 <div className="flex items-start gap-4">
                   <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-blue-600">
                     <Phone className="h-6 w-6" />
                   </div>
                   <div className="pt-1">
-                    <h4 className="font-bold mb-1 uppercase text-xs tracking-widest text-slate-500">Téléphone / WhatsApp</h4>
+                    <h4 className="font-bold mb-1 uppercase text-xs tracking-widest text-slate-500">
+                      {isFr ? 'Téléphone / WhatsApp' : 'Phone / WhatsApp'}
+                    </h4>
                     <a href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`} className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors block mb-1">
                       {siteConfig.contact.phone}
                     </a>
@@ -89,17 +94,19 @@ export default async function ContactPage({
                     </a>
                     <a href={siteConfig.contact.whatsappLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-md font-semibold text-green-600 hover:text-green-500 transition-colors">
                       <MessageCircle className="w-4 h-4" />
-                      Discuter par WhatsApp
+                      {isFr ? 'Discuter par WhatsApp' : 'Chat on WhatsApp'}
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-4">
                   <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-blue-600">
                     <MapPin className="h-6 w-6" />
                   </div>
                   <div className="pt-1">
-                    <h4 className="font-bold mb-1 uppercase text-xs tracking-widest text-slate-500">Adresse</h4>
+                    <h4 className="font-bold mb-1 uppercase text-xs tracking-widest text-slate-500">
+                      {isFr ? 'Adresse' : 'Address'}
+                    </h4>
                     <a href={siteConfig.location.googleMapsLink} target="_blank" rel="noreferrer" className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors leading-tight">
                       {siteConfig.location.address}
                     </a>
@@ -107,9 +114,11 @@ export default async function ContactPage({
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-slate-50 dark:bg-zinc-950 p-8 sm:p-12 rounded-3xl border border-slate-200 dark:border-zinc-800 shadow-xl">
-              <h3 className="text-2xl font-bold mb-8 text-slate-900 dark:text-white">Envoyez-nous un message</h3>
+              <h3 className="text-2xl font-bold mb-8 text-slate-900 dark:text-white">
+                {isFr ? 'Envoyez-nous un message' : 'Send us a message'}
+              </h3>
               <ContactForm lang={lang} />
             </div>
           </div>

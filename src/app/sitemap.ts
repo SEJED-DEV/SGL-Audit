@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://sglaudit.tn'
+const BASE_URL = 'https://sglaudit.com'
 
 const routes = [
   '',

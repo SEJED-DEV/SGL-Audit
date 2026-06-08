@@ -56,7 +56,7 @@ export default async function Home({
                   <div className="pt-1">
                     <h4 className="font-bold mb-1 uppercase text-xs tracking-widest text-slate-500">Site web</h4>
                     <a href={siteConfig.website} target="_blank" rel="noreferrer" className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                      sglaudit.tn
+                      sglaudit.com
                     </a>
                   </div>
                 </div>

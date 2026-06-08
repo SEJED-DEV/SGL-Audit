@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title,
     description,
     alternates: {
-      canonical: `https://sglaudit.tn/${lang}/investir-en-tunisie`,
+      canonical: `https://sglaudit.com/${lang}/investir-en-tunisie`,
     },
     openGraph: { title, description },
   }

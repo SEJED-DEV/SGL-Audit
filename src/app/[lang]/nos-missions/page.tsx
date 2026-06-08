@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title,
     description,
     alternates: {
-      canonical: `https://sglaudit.tn/${lang}/nos-missions`,
+      canonical: `https://sglaudit.com/${lang}/nos-missions`,
     },
     openGraph: { title, description },
   }

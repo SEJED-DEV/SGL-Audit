@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     title,
     description,
     alternates: {
-      canonical: `https://sglaudit.tn/${lang}/nos-expertises/paie-social`,
+      canonical: `https://sglaudit.com/${lang}/nos-expertises/paie-social`,
     },
     openGraph: { title, description },
   }
