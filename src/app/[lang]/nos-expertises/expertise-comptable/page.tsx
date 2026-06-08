@@ -27,8 +27,38 @@ export default async function ExpertiseComptablePage({
   const { lang } = await params
   const isFr = lang === 'fr'
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: isFr ? 'Accueil' : 'Home', item: `https://sglaudit.com/${lang}` },
+      { '@type': 'ListItem', position: 2, name: isFr ? 'Nos Expertises' : 'Our Expertise', item: `https://sglaudit.com/${lang}/nos-expertises` },
+      { '@type': 'ListItem', position: 3, name: isFr ? 'Expertise Comptable' : 'Accounting', item: `https://sglaudit.com/${lang}/nos-expertises/expertise-comptable` },
+    ],
+  }
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: isFr ? 'Expertise Comptable' : 'Accounting Expertise',
+    provider: { '@type': 'AccountingService', name: 'SGL Audit' },
+    areaServed: { '@type': 'City', name: 'Tunis' },
+    description: isFr
+      ? 'Tenue de comptabilité, révision, bilan, déclarations fiscales et reporting à Tunis.'
+      : 'Bookkeeping, audit, financial statements, tax returns and reporting in Tunis.',
+    offers: {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: isFr ? 'Tenue de comptabilité' : 'Bookkeeping',
+      },
+    },
+  }
+
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-zinc-950">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       {/* Hero */}
       <section className="min-h-[100dvh] flex items-center pt-24 pb-20 bg-gradient-to-br from-slate-900 to-blue-950 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />

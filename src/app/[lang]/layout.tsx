@@ -73,6 +73,7 @@ export default async function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': ['AccountingService', 'LocalBusiness'],
+    '@id': `https://sglaudit.com/${lang}#business`,
     name: siteConfig.name,
     description: siteConfig.description,
     url: `https://sglaudit.com/${lang}`,
@@ -104,6 +105,20 @@ export default async function RootLayout({
     hasMap: 'https://maps.google.com/?q=Bab+Khadhra+Tunis',
     currenciesAccepted: 'TND',
     paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer'],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      bestRating: '5',
+      ratingCount: '4',
+      reviewCount: '4',
+    },
+    knowsAbout: [
+      { '@type': 'Thing', name: 'Comptabilité' },
+      { '@type': 'Thing', name: 'Fiscalité' },
+      { '@type': 'Thing', name: 'Paie' },
+      { '@type': 'Thing', name: 'Droit des sociétés' },
+      { '@type': 'Thing', name: 'Création d\'entreprise' },
+    ],
   }
 
   return (

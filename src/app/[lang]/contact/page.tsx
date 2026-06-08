@@ -27,8 +27,18 @@ export default async function ContactPage({
   const { lang } = await params
   const isFr = lang === 'fr'
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: isFr ? 'Accueil' : 'Home', item: `https://sglaudit.com/${lang}` },
+      { '@type': 'ListItem', position: 2, name: isFr ? 'Contact' : 'Contact', item: `https://sglaudit.com/${lang}/contact` },
+    ],
+  }
+
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-zinc-950">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <section className="min-h-[60vh] flex items-center pt-32 pb-20 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-5" />
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none" />

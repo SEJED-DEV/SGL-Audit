@@ -27,9 +27,32 @@ export default async function BlogsPage({
 }) {
   const { lang } = await params
   const dict = await getDictionary(lang as 'en' | 'fr')
+  const isFr = lang === 'fr'
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: isFr ? 'Accueil' : 'Home', item: `https://sglaudit.com/${lang}` },
+      { '@type': 'ListItem', position: 2, name: isFr ? 'Blog' : 'Blog', item: `https://sglaudit.com/${lang}/blogs` },
+    ],
+  }
+
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: blogs.map((post, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `https://sglaudit.com/${lang}/blogs/${post.slug}`,
+      name: post.title[lang as 'en' | 'fr'],
+    })),
+  }
 
   return (
     <div className="py-24 bg-white dark:bg-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }} />
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">{dict.navigation.blogs}</h1>

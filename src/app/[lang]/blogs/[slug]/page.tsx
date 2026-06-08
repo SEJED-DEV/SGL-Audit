@@ -61,7 +61,18 @@ export default async function BlogDetailPage({
 
   const title = post.title[lang as 'en' | 'fr']
   const content = post.content[lang as 'en' | 'fr']
+  const isFr = lang === 'fr'
   const relatedPosts = blogs.filter((b) => b.slug !== slug).sort(() => 0.5 - Math.random()).slice(0, 3)
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: isFr ? 'Accueil' : 'Home', item: `https://sglaudit.com/${lang}` },
+      { '@type': 'ListItem', position: 2, name: isFr ? 'Blog' : 'Blog', item: `https://sglaudit.com/${lang}/blogs` },
+      { '@type': 'ListItem', position: 3, name: title, item: `https://sglaudit.com/${lang}/blogs/${slug}` },
+    ],
+  }
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -71,10 +82,13 @@ export default async function BlogDetailPage({
     datePublished: post.date,
     description: post.excerpt[lang as 'en' | 'fr'],
     url: `https://sglaudit.com/${lang}/blogs/${slug}`,
+    publisher: { '@type': 'Organization', name: 'SGL Audit' },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://sglaudit.com/${lang}/blogs/${slug}` },
   }
 
   return (
     <div className="py-24 bg-white dark:bg-black min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
