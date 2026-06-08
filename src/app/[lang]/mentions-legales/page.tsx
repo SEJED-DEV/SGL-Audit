@@ -33,20 +33,13 @@ export default async function MentionsLegalesPage({
             Le site <strong>sglaudit.com</strong> est édité par :
           </p>
           <p>
-            <strong>{siteConfig.name}</strong><br />
-            Société d&apos;expertise comptable inscrite au tableau de l&apos;Ordre des Experts Comptables de Tunisie.
-          </p>
-          <p>
-            Siège social : {siteConfig.location.address}<br />
-            Téléphone : {siteConfig.contact.phone} / {siteConfig.contact.phone2}<br />
-            Email : {siteConfig.contact.email}<br />
-            Site web : <a href={siteConfig.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">sglaudit.com</a>
-          </p>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-4 pt-4 border-t border-slate-200 dark:border-zinc-700">
-            <strong>Publication :</strong> {siteConfig.developer.name}<br />
+            <strong>{siteConfig.developer.name}</strong><br />
             Tél : {siteConfig.developer.phone}<br />
             Email : {siteConfig.developer.email}<br />
             Site web : <a href={siteConfig.developer.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{siteConfig.developer.website}</a>
+          </p>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-4 pt-4 border-t border-slate-200 dark:border-zinc-700">
+            Site réalisé pour le compte de <strong>{siteConfig.name}</strong> — {siteConfig.location.address}
           </p>
         </>
       ) : (
@@ -55,20 +48,13 @@ export default async function MentionsLegalesPage({
             The website <strong>sglaudit.com</strong> is published by:
           </p>
           <p>
-            <strong>{siteConfig.name}</strong><br />
-            Accounting firm registered with the Order of Chartered Accountants of Tunisia.
-          </p>
-          <p>
-            Headquarters: {siteConfig.location.address}<br />
-            Phone: {siteConfig.contact.phone} / {siteConfig.contact.phone2}<br />
-            Email: {siteConfig.contact.email}<br />
-            Website: <a href={siteConfig.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">sglaudit.com</a>
-          </p>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-4 pt-4 border-t border-slate-200 dark:border-zinc-700">
-            <strong>Publication:</strong> {siteConfig.developer.name}<br />
+            <strong>{siteConfig.developer.name}</strong><br />
             Phone: {siteConfig.developer.phone}<br />
             Email: {siteConfig.developer.email}<br />
             Website: <a href={siteConfig.developer.website} target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">{siteConfig.developer.website}</a>
+          </p>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-4 pt-4 border-t border-slate-200 dark:border-zinc-700">
+            Website created for <strong>{siteConfig.name}</strong> — {siteConfig.location.address}
           </p>
         </>
       ),
