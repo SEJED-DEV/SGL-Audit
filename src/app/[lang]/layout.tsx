@@ -1,22 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "../globals.css";
 import { Providers } from "@/components/Providers";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ContextMenu } from "@/components/ContextMenu";
 import { getDictionary } from "@/lib/get-dictionary";
 import { siteConfig } from "@/config/site";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params
@@ -108,27 +96,19 @@ export default async function RootLayout({
   }
 
   return (
-    <html
-      lang={lang}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      suppressHydrationWarning
-    >
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
-      <body className="min-h-full flex flex-col bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
-        <Providers>
-          <ContextMenu lang={lang} />
-          <Header lang={lang} dict={dict} />
-          <div className="flex-1">
-            {children}
-          </div>
-          <Footer lang={lang} dict={dict} />
-        </Providers>
-      </body>
-    </html>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Providers>
+        <ContextMenu lang={lang} />
+        <Header lang={lang} dict={dict} />
+        <div className="flex-1">
+          {children}
+        </div>
+        <Footer lang={lang} dict={dict} />
+      </Providers>
+    </>
   );
 }
