@@ -86,8 +86,7 @@ export default async function RootLayout({
   const { lang } = await params;
   const dict = await getDictionary(lang as 'en' | 'fr');
 
-  const delay = Math.floor(Math.random() * 2000) + 1000
-  await new Promise(resolve => setTimeout(resolve, delay))
+  await new Promise(resolve => setTimeout(resolve, 3000))
 
   const jsonLd = {
     '@context': 'https://schema.org',
