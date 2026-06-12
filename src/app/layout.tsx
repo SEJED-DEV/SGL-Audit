@@ -16,7 +16,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SGL Audit",
   other: {
-    'google-site-verification': 'google-site-verification',
     'theme-color': '#1e40af',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
@@ -39,7 +38,7 @@ const websiteJsonLd = {
         '@type': 'SearchAction',
         target: {
           '@type': 'EntryPoint',
-          urlTemplate: 'https://sglaudit.com/fr/blog?search={search_term_string}',
+          urlTemplate: 'https://sglaudit.com/fr/blogs?search={search_term_string}',
         },
         'query-input': 'required name=search_term_string',
       },

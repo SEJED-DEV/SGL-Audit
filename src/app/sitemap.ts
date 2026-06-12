@@ -36,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   }
 
-  const blogRoutes = ['/blog', '/blogs']
+  const blogRoutes = ['/blogs']
   for (const route of blogRoutes) {
     entries.push({
       url: `${BASE_URL}/fr${route}`,

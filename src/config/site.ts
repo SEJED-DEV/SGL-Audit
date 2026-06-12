@@ -71,7 +71,7 @@
     },
     {
       name: { fr: "Blog", en: "Blog", ar: "Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©" },
-      href: "/blog"
+      href: "/blogs"
     },
     {
       name: { fr: "Contact", en: "Contact", ar: "Ø§ØªØµÙ„ Ø¨Ù†Ø§" },

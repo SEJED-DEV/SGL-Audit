@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       images: ['https://sglaudit.com/logo.png'],
     },
     verification: {
-      google: 'google-site-verification',
+      google: 'YOUR_GOOGLE_VERIFICATION_CODE',
     },
   }
 }
@@ -85,8 +85,6 @@ export default async function RootLayout({
 }) {
   const { lang } = await params;
   const dict = await getDictionary(lang as 'en' | 'fr');
-
-  await new Promise(resolve => setTimeout(resolve, 3000))
 
   const jsonLd = {
     '@context': 'https://schema.org',
